@@ -430,17 +430,17 @@ function createMap(){
     message.innerHTML = `
 
         <h2>
-            DISTANCE DOES NOT MATTER
+            РАССТОЯНИЕ ВСЕГО ЛИШЬ ЦИФРА
         </h2>
 
 
         <p>
-            SECURE LINK ESTABLISHED
+            СЕКРЕТНОЕ ПОДКЛЮЧЕНИЕ УСТАНОВЛЕНО
         </p>
 
 
         <p>
-            RUZA ❤️ GAGRA
+            РУЗА ❤️ ГАГРА
         </p>
 
     `;
@@ -655,21 +655,21 @@ async function showFinal(){
     await typeFinal(
 
 `
-CONNECTION COMPLETE
+СОЕДИНЕНИЕ УСТАНОВЛЕНО
 
 
-DISTANCE:
-1420 KM
+РАССТОЯНИЕ:
+~1420 KM
 
 
-BUT SOME CONNECTIONS
+НО НЕ ВСЕМУ
 
-DO NOT DEPEND
+РАССТОЯНИЕ ЯВЛЯЕТСЯ
 
-ON COORDINATES.
+ПРЕГРАДОЙ.
 
 
-I MISS YOU ❤️
+Я СКУЧАЮ ПО ТЕБЕ ❤️
 `
 
     );
