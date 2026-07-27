@@ -2,38 +2,213 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta charset="UTF-8">
 
-    <title>Always Connected</title>
+<meta 
+name="viewport" 
+content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
-    <link rel="stylesheet" href="css/style.css">
 
-    <!-- JetBrains Mono -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<title>Always Connected</title>
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600&display=swap"
-        rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
+<link 
+href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600&display=swap"
+rel="stylesheet">
+
+
+<link
+rel="stylesheet"
+href="https://unpkg.com/leaflet/dist/leaflet.css">
+
 
 </head>
 
+
 <body>
 
-    <main id="app">
 
-        <button id="startButton">
-            Break Distance
-        </button>
 
-    </main>
+<!-- LANDING -->
 
-    <script src="js/app.js"></script>
+<section id="landing">
+
+
+<div id="version">
+Always Connected v1.0.0
+</div>
+
+
+
+<div id="content">
+
+
+<h1>
+SECURE CONNECTION
+</h1>
+
+
+<div id="status">
+
+<span class="dot"></span>
+
+READY
+
+</div>
+
+
+
+<button id="startButton">
+
+INITIALIZE
+
+</button>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+<!-- TERMINAL -->
+
+
+<section id="terminalScreen">
+
+
+<div id="terminalWindow">
+
+
+<div id="terminalHeader">
+
+
+<div class="lights">
+
+<span class="red"></span>
+
+<span class="yellow"></span>
+
+<span class="green"></span>
+
+
+</div>
+
+
+
+<div class="title">
+
+Terminal
+
+</div>
+
+
+</div>
+
+
+
+
+<div id="terminalBody">
+
+
+<div id="terminalOutput"></div>
+
+
+<span id="cursor"></span>
+
+
+</div>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+<!-- MAP -->
+
+
+<section id="mapScreen">
+
+
+<div id="map"></div>
+
+
+</section>
+
+
+
+
+
+
+<!-- FINAL -->
+
+
+<section id="finalScreen">
+
+
+<div id="finalCard">
+
+
+<div id="finalText"></div>
+
+
+<button id="restartButton">
+
+PLAY AGAIN
+
+</button>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+<audio id="music">
+
+<source src="assets/music.mp3" type="audio/mpeg">
+
+</audio>
+
+
+
+
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+
+<script src="js/app.js"></script>
+
+
 
 </body>
+
 
 </html>
