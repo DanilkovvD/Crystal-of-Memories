@@ -92,7 +92,7 @@ async function startConnection(){
 
 
     startButton.textContent =
-        "CONNECTING...";
+        "ПОДКЛЮЧЕНИЕ...";
 
 
     await sleep(800);
