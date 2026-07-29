@@ -1,123 +1,201 @@
-const crystal = document.querySelector(".crystal");
-const crystalWrapper = document.querySelector(".crystal-wrapper");
-const particlesContainer = document.querySelector(".crystal-particles");
+document.addEventListener("DOMContentLoaded", () => {
+    /* =========================================
+       Memory collection
+    ========================================= */
 
-const PARTICLE_COUNT = 24;
+    const memories = [
+        "Сегодня я скучаю по тебе немного сильнее, чем вчера ❤️",
+        "Если бы расстояние можно было уменьшить одной строчкой кода, я бы уже давно это сделал",
+        "Ты - самое лучшие, что происходило со мной",
+        "Даже самый обычный день становится немного лучше, если в нём есть ты",
+        "Если бы мне пришлось выбирать одно место в мире, я бы выбрал то, где ты рядом",
+        "Некоторые люди приходят в жизнь случайно. А потом становятся самым важным",
+        "Мне нравится мысль о том, что где-то прямо сейчас есть человек, о котором я думаю. И это ты"
+    ];
 
-let isAwakened = false;
+    /* =========================================
+       Elements
+    ========================================= */
 
-/* =========================================
-   Random helper
-========================================= */
+    const crystalWrapper = document.querySelector(".crystal-wrapper");
+    const crystal = document.querySelector(".crystal");
+    const memoryCard = document.querySelector(".memory-card");
+    const memoryMessage = document.querySelector(".memory-message");
 
-function random(min, max) {
-    return Math.random() * (max - min) + min;
-}
-
-/* =========================================
-   Create particles
-========================================= */
-
-function createParticles() {
-    particlesContainer.innerHTML = "";
-
-    for (let i = 0; i < PARTICLE_COUNT; i += 1) {
-        const particle = document.createElement("span");
-
-        particle.className = "crystal-particle";
-
-        particle.style.setProperty(
-            "--size",
-            `${random(4, 6)}px`
-        );
-
-        particle.style.setProperty(
-            "--left",
-            `${random(10, 84)}%`
-        );
-
-        particle.style.setProperty(
-            "--top",
-            `${random(10, 84)}%`
-        );
-
-        particle.style.setProperty(
-            "--x1",
-            `${random(-9, -2)}px`
-        );
-
-        particle.style.setProperty(
-            "--y1",
-            `${random(3, 9)}px`
-        );
-
-        particle.style.setProperty(
-            "--x2",
-            `${random(3, 11)}px`
-        );
-
-        particle.style.setProperty(
-            "--y2",
-            `${random(-11, -3)}px`
-        );
-
-        particle.style.setProperty(
-            "--x3",
-            `${random(-10, -3)}px`
-        );
-
-        particle.style.setProperty(
-            "--y3",
-            `${random(3, 10)}px`
-        );
-
-        particle.style.setProperty(
-            "--duration",
-            `${random(5, 8)}s`
-        );
-
-        particle.style.setProperty(
-            "--delay",
-            `${random(-8, 0)}s`
-        );
-
-        particlesContainer.appendChild(
-            particle
-        );
-    }
-}
-
-/* =========================================
-   Crystal awakening
-========================================= */
-
-function awakenCrystal() {
-    if (isAwakened) {
+    if (!crystalWrapper || !crystal || !memoryCard || !memoryMessage) {
         return;
     }
 
-    isAwakened = true;
+    /* =========================================
+       State
+    ========================================= */
 
-    crystal.classList.add(
-        "is-awakening"
-    );
+    let isAnimating = false;
+    let isAwakened = false;
+    let lastMemoryIndex = -1;
 
-    crystalWrapper.classList.add(
-        "is-awakening"
-    );
-}
+    /* =========================================
+       Memory selection
+    ========================================= */
 
-/* =========================================
-   Init
-========================================= */
+    function getRandomMemory() {
+        if (memories.length === 0) {
+            return "";
+        }
 
-function init() {
-    createParticles();
+        if (memories.length === 1) {
+            lastMemoryIndex = 0;
+            return memories[0];
+        }
+
+        let randomIndex;
+
+        do {
+            randomIndex = Math.floor(Math.random() * memories.length);
+        } while (randomIndex === lastMemoryIndex);
+
+        lastMemoryIndex = randomIndex;
+
+        return memories[randomIndex];
+    }
+
+    /* =========================================
+       Memory text
+    ========================================= */
+
+    function setMemoryText() {
+        memoryMessage.textContent = getRandomMemory();
+    }
+
+    /* =========================================
+       Restart CSS animations
+    ========================================= */
+
+    function restartAwakeningAnimation() {
+        crystalWrapper.classList.remove("is-awakening");
+
+        // Force browser reflow so the animation can start again.
+        void crystalWrapper.offsetWidth;
+
+        crystalWrapper.classList.add("is-awakening");
+    }
+
+    /* =========================================
+       First awakening
+    ========================================= */
+
+    function awakenCrystal() {
+        if (isAnimating) {
+            return;
+        }
+
+        isAnimating = true;
+        isAwakened = true;
+
+        setMemoryText();
+
+        restartAwakeningAnimation();
+
+        /*
+         * The CSS controls the complete visual sequence:
+         *
+         * 1. Crystal wakes up
+         * 2. Particles accelerate
+         * 3. Energy ring appears
+         * 4. Memory materializes
+         * 5. Glass card reveals itself
+         */
+
+        window.setTimeout(() => {
+            isAnimating = false;
+        }, 4200);
+    }
+
+    /* =========================================
+       New memory
+    ========================================= */
+
+    function showNewMemory() {
+        if (isAnimating) {
+            return;
+        }
+
+        isAnimating = true;
+
+        /*
+         * First hide the current card content.
+         * The card itself remains in place.
+         */
+        memoryCard.style.transition =
+            "opacity 0.45s ease, transform 0.45s ease";
+
+        memoryCard.style.opacity = "0";
+        memoryCard.style.transform =
+            "translateY(10px) scale(0.96)";
+
+        window.setTimeout(() => {
+            setMemoryText();
+
+            /*
+             * Reset inline styles before restarting
+             * the main CSS animation.
+             */
+            memoryCard.style.transition = "";
+            memoryCard.style.opacity = "";
+            memoryCard.style.transform = "";
+
+            restartAwakeningAnimation();
+
+            window.setTimeout(() => {
+                isAnimating = false;
+            }, 4200);
+        }, 500);
+    }
+
+    /* =========================================
+       Crystal interaction
+    ========================================= */
+
+    crystal.addEventListener("click", () => {
+        if (!isAwakened) {
+            awakenCrystal();
+            return;
+        }
+
+        showNewMemory();
+    });
+
+    /* =========================================
+       Touch support
+    ========================================= */
 
     crystal.addEventListener(
-        "pointerdown",
-        awakenCrystal
+        "touchend",
+        (event) => {
+            event.preventDefault();
+        },
+        { passive: false }
     );
-}
 
-init();
+    /* =========================================
+       Accessibility
+    ========================================= */
+
+    crystal.setAttribute(
+        "aria-label",
+        "Открыть воспоминание"
+    );
+
+    crystal.setAttribute(
+        "role",
+        "button"
+    );
+
+    /* =========================================
+       Initial state
+    ========================================= */
+
+    memoryMessage.textContent = "";
+
+    crystalWrapper.classList.remove("is-awakening");
+});
