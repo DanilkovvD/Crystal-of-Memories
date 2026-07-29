@@ -1,214 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    >
+    <title>Crystal of Memories</title>
 
-<meta charset="UTF-8">
-
-<meta 
-name="viewport" 
-content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-
-
-<title>Always Connected</title>
-
-
-<link rel="stylesheet" href="css/style.css">
-
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-
-<link 
-href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600&display=swap"
-rel="stylesheet">
-
-
-<link
-rel="stylesheet"
-href="https://unpkg.com/leaflet/dist/leaflet.css">
-
-
+    <link rel="stylesheet" href="css/style.css">
 </head>
-
-
 <body>
 
+    <main class="scene">
 
+        <div class="background-glow glow-1"></div>
+        <div class="background-glow glow-2"></div>
 
-<!-- LANDING -->
+        <section class="crystal-wrapper">
 
-<section id="landing">
+            <div class="crystal">
+                <div class="crystal-shine"></div>
+                <div class="crystal-highlight"></div>
+            </div>
 
+            <p class="hint">
+                Touch the Crystal ✨
+            </p>
 
-<div id="version">
-Always Connected v1.0.0
-</div>
+        </section>
 
+    </main>
 
-
-<div id="content">
-
-
-<h1>
-ЗАКРЫТОЕ ПОДКЛЮЧЕНИЕ
-</h1>
-
-
-<div id="status">
-
-<span class="dot"></span>
-
-ГОТОВ К ПОДКЛЮЧЕНИЮ
-
-</div>
-
-
-
-<button id="startButton">
-
-ПОДКЛЮЧИТЬСЯ
-
-</button>
-
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-<!-- TERMINAL -->
-
-
-<section id="terminalScreen">
-
-
-<div id="terminalWindow">
-
-
-<div id="terminalHeader">
-
-
-<div class="lights">
-
-<span class="red"></span>
-
-<span class="yellow"></span>
-
-<span class="green"></span>
-
-
-</div>
-
-
-
-<div class="title">
-
-Terminal
-
-</div>
-
-
-</div>
-
-
-
-
-<div id="terminalBody">
-
-
-<div id="terminalOutput"></div>
-
-
-<span id="cursor"></span>
-
-
-</div>
-
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-<!-- MAP -->
-
-
-<section id="mapScreen">
-
-
-<div id="map"></div>
-
-
-</section>
-
-
-
-
-
-
-<!-- FINAL -->
-
-
-<section id="finalScreen">
-
-
-<div id="finalCard">
-
-
-<div id="finalText"></div>
-
-
-<button id="restartButton">
-
-НАЧАТЬ ЗАНОВО
-
-</button>
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-
-<audio id="music">
-
-<source src="assets/music.mp3" type="audio/mpeg">
-
-</audio>
-
-
-
-
-
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-
-
-<script src="js/app.js"></script>
-
-
+    <script src="js/app.js"></script>
 
 </body>
-
-
 </html>
