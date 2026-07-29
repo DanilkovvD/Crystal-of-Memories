@@ -6,12 +6,13 @@
     padding: 0;
 }
 
-html {
+html,
+body {
+    width: 100%;
     height: 100%;
 }
 
 body {
-    height: 100%;
     overflow: hidden;
 
     font-family:
@@ -22,24 +23,24 @@ body {
         "Segoe UI",
         sans-serif;
 
-    background:
-        radial-gradient(
-            circle at 50% 43%,
-            #e8b6cc 0%,
-            #dba4bd 38%,
-            #cc91ae 70%,
-            #bd8eaf 100%
-        );
-
-    color: #ffffff;
-
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+
+    background:
+        radial-gradient(
+            circle at 50% 42%,
+            #e7b2c9 0%,
+            #dba0ba 38%,
+            #cc8fac 70%,
+            #bc89aa 100%
+        );
+
+    color: #21171c;
 }
 
-/* =================================
+/* =========================================
    Scene
-================================= */
+========================================= */
 
 .scene {
     position: relative;
@@ -59,9 +60,9 @@ body {
         max(24px, env(safe-area-inset-bottom));
 }
 
-/* =================================
-   Background atmosphere
-================================= */
+/* =========================================
+   Background
+========================================= */
 
 .background-glow {
     position: absolute;
@@ -80,7 +81,7 @@ body {
     top: -190px;
     left: -140px;
 
-    background: rgba(255, 219, 235, 0.3);
+    background: rgba(255, 220, 235, 0.28);
 }
 
 .glow-2 {
@@ -90,7 +91,7 @@ body {
     right: -160px;
     bottom: -140px;
 
-    background: rgba(121, 48, 91, 0.25);
+    background: rgba(111, 43, 83, 0.25);
 }
 
 .glow-3 {
@@ -102,28 +103,26 @@ body {
 
     transform: translate(-50%, -50%);
 
-    background: rgba(255, 218, 234, 0.18);
+    background: rgba(255, 218, 234, 0.16);
 
     filter: blur(120px);
 }
 
-/* =================================
+/* =========================================
    External sparkles
-================================= */
+========================================= */
 
 .sparkles {
     position: absolute;
     inset: 0;
 
-    pointer-events: none;
-
     overflow: hidden;
+
+    pointer-events: none;
 }
 
 .sparkle {
     position: absolute;
-
-    display: block;
 
     pointer-events: none;
 
@@ -133,24 +132,17 @@ body {
         ease-in-out
         infinite;
 
-    will-change:
-        transform,
-        opacity;
+    will-change: transform, opacity;
 }
 
 .sparkle-star {
-    font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        sans-serif;
-
-    font-weight: 500;
-
     color: #ffe2a3;
 
+    font-size: 20px;
+    font-weight: 500;
+
     text-shadow:
-        0 0 3px rgba(255, 245, 205, 1),
+        0 0 3px rgba(255, 248, 218, 1),
         0 0 8px rgba(255, 197, 104, 1),
         0 0 16px rgba(236, 131, 164, 0.95),
         0 0 28px rgba(154, 63, 111, 0.65);
@@ -182,8 +174,6 @@ body {
 
     top: 18%;
     left: 16%;
-
-    font-size: 20px;
 
     animation-delay: -2s;
 }
@@ -225,9 +215,6 @@ body {
     top: 17%;
     right: 34%;
 
-    width: 5px;
-    height: 5px;
-
     animation-delay: -1s;
 }
 
@@ -247,9 +234,6 @@ body {
 
     top: 42%;
     right: 10%;
-
-    width: 5px;
-    height: 5px;
 
     animation-delay: -4s;
 }
@@ -271,9 +255,6 @@ body {
     top: 34%;
     left: 28%;
 
-    width: 5px;
-    height: 5px;
-
     animation-delay: -8s;
 }
 
@@ -288,10 +269,6 @@ body {
         opacity: 0.2;
     }
 
-    25% {
-        opacity: 0.85;
-    }
-
     50% {
         transform:
             translate3d(8px, -14px, 0)
@@ -299,10 +276,6 @@ body {
             rotate(8deg);
 
         opacity: 1;
-    }
-
-    75% {
-        opacity: 0.65;
     }
 
     100% {
@@ -315,23 +288,22 @@ body {
     }
 }
 
-/* =================================
+/* =========================================
    Crystal wrapper
-================================= */
+========================================= */
 
 .crystal-wrapper {
     position: relative;
+    z-index: 5;
 
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    z-index: 5;
 }
 
-/* =================================
+/* =========================================
    Crystal
-================================= */
+========================================= */
 
 .crystal {
     position: relative;
@@ -344,87 +316,60 @@ body {
 
     border-radius: 50%;
 
+    overflow: hidden;
+
     appearance: none;
     -webkit-appearance: none;
 
     cursor: pointer;
 
-    overflow: hidden;
-
     background:
         radial-gradient(
-            circle at 34% 28%,
+            circle at 34% 27%,
             rgba(255, 255, 255, 0.96) 0%,
-            rgba(255, 239, 248, 0.74) 30%,
-            rgba(242, 184, 213, 0.72) 58%,
-            rgba(207, 116, 164, 0.64) 100%
+            rgba(255, 240, 248, 0.78) 27%,
+            rgba(239, 180, 209, 0.72) 57%,
+            rgba(198, 103, 151, 0.68) 100%
         );
 
-    border: 1px solid rgba(255, 255, 255, 0.78);
-
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
 
     box-shadow:
-        inset 0 0 30px rgba(255, 255, 255, 0.62),
-        inset 0 -20px 35px rgba(255, 255, 255, 0.16),
+        inset 0 0 35px rgba(255, 255, 255, 0.62),
+        inset 0 -20px 38px rgba(255, 255, 255, 0.15),
         0 30px 60px rgba(104, 35, 75, 0.32),
-        0 0 55px rgba(255, 231, 243, 0.55);
+        0 0 55px rgba(255, 231, 243, 0.5);
 
     animation:
-        floatCrystal
+        crystalFloat
         7s
         ease-in-out
         infinite;
+
+    -webkit-tap-highlight-color: transparent;
 
     will-change:
         transform,
         box-shadow;
 
-    -webkit-tap-highlight-color: transparent;
-
     transition:
-        box-shadow 1s ease,
-        filter 1s ease;
+        box-shadow 0.8s ease,
+        filter 0.8s ease;
 }
 
 .crystal::before {
     content: "";
 
     position: absolute;
-    inset: 8px;
+    inset: 9px;
 
     border-radius: 50%;
 
-    border: 1px solid rgba(255, 255, 255, 0.28);
+    border: 1px solid rgba(255, 255, 255, 0.32);
 
     pointer-events: none;
 
-    z-index: 5;
-}
-
-.crystal::after {
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
-
-    border-radius: 50%;
-
-    pointer-events: none;
-
-    background:
-        radial-gradient(
-            circle at 50% 55%,
-            rgba(180, 71, 126, 0.18),
-            rgba(180, 71, 126, 0) 58%
-        );
-
-    opacity: 0.8;
-
-    transition:
-        opacity 1s ease;
+    z-index: 10;
 }
 
 .crystal:focus {
@@ -432,47 +377,46 @@ body {
 }
 
 .crystal:active {
-    transform: scale(0.985);
+    transform: scale(0.97);
 }
 
-/* =================================
-   Inner crystal depth
-================================= */
+/* =========================================
+   Inner glass depth
+========================================= */
 
-.crystal-depth {
+.crystal-inner {
     position: absolute;
 
-    inset: 30px;
+    inset: 20px;
 
     border-radius: 50%;
 
+    overflow: hidden;
+
     background:
         radial-gradient(
-            circle at 50% 52%,
-            rgba(160, 60, 113, 0.18),
-            rgba(196, 90, 140, 0.12) 38%,
-            rgba(255, 255, 255, 0) 72%
+            circle at 50% 55%,
+            rgba(145, 54, 103, 0.35) 0%,
+            rgba(184, 71, 123, 0.24) 35%,
+            rgba(223, 128, 166, 0.12) 62%,
+            rgba(255, 255, 255, 0) 100%
         );
 
-    filter: blur(2px);
+    box-shadow:
+        inset 0 0 35px rgba(111, 35, 78, 0.22),
+        inset 0 0 12px rgba(255, 255, 255, 0.35);
 
-    pointer-events: none;
-
-    z-index: 1;
-
-    transition:
-        opacity 1s ease,
-        transform 1s ease;
+    z-index: 2;
 }
 
-/* =================================
-   Inner particles
-================================= */
+/* =========================================
+   JavaScript particles
+========================================= */
 
 .crystal-particles {
     position: absolute;
 
-    inset: 24px;
+    inset: 0;
 
     overflow: hidden;
 
@@ -480,257 +424,95 @@ body {
 
     pointer-events: none;
 
-    opacity: 0.95;
-
     z-index: 3;
-
-    transition:
-        opacity 0.8s ease;
 }
 
 .crystal-particle {
     position: absolute;
 
-    width: 5px;
-    height: 5px;
+    width: var(--size);
+    height: var(--size);
+
+    left: 0;
+    top: 0;
 
     border-radius: 50%;
 
     background:
         radial-gradient(
             circle,
-            #fffbe8 0%,
-            #ffe18c 34%,
-            #e47da5 72%,
-            #a74e7d 100%
+            #fffce9 0%,
+            #ffe28d 35%,
+            #e17da4 75%,
+            #9d4b78 100%
         );
 
     box-shadow:
-        0 0 4px rgba(255, 248, 218, 1),
-        0 0 9px rgba(255, 211, 119, 1),
-        0 0 15px rgba(221, 104, 153, 0.95);
+        0 0 5px rgba(255, 250, 220, 1),
+        0 0 11px rgba(255, 208, 112, 1),
+        0 0 19px rgba(221, 103, 153, 0.95);
 
-    animation:
-        particleDrift
-        var(--particle-duration)
-        ease-in-out
-        infinite;
+    opacity: var(--opacity);
 
-    animation-delay:
-        var(--particle-delay);
+    transform:
+        translate3d(
+            var(--x),
+            var(--y),
+            0
+        );
 
-    will-change:
-        transform,
-        opacity;
+    transition:
+        opacity 0.7s ease,
+        box-shadow 0.7s ease;
+
+    will-change: transform;
 }
 
-.particle-1 {
-    --particle-duration: 7s;
-    --particle-delay: -1s;
+.crystal-particle::after {
+    content: "";
 
-    left: 24%;
-    top: 28%;
+    position: absolute;
+
+    width: 2px;
+    height: 2px;
+
+    top: 50%;
+    left: 50%;
+
+    border-radius: 50%;
+
+    transform: translate(-50%, -50%);
+
+    background: #fffce8;
 }
 
-.particle-2 {
-    --particle-duration: 9s;
-    --particle-delay: -4s;
-
-    left: 63%;
-    top: 24%;
-}
-
-.particle-3 {
-    --particle-duration: 8s;
-    --particle-delay: -2s;
-
-    left: 48%;
-    top: 42%;
-}
-
-.particle-4 {
-    --particle-duration: 10s;
-    --particle-delay: -6s;
-
-    left: 30%;
-    top: 58%;
-}
-
-.particle-5 {
-    --particle-duration: 8.5s;
-    --particle-delay: -3s;
-
-    left: 70%;
-    top: 57%;
-}
-
-.particle-6 {
-    --particle-duration: 7.5s;
-    --particle-delay: -5s;
-
-    left: 54%;
-    top: 70%;
-}
-
-.particle-7 {
-    --particle-duration: 9.5s;
-    --particle-delay: -7s;
-
-    left: 18%;
-    top: 45%;
-}
-
-.particle-8 {
-    --particle-duration: 8s;
-    --particle-delay: -2.5s;
-
-    left: 78%;
-    top: 39%;
-}
-
-.particle-9 {
-    --particle-duration: 11s;
-    --particle-delay: -8s;
-
-    left: 42%;
-    top: 18%;
-}
-
-.particle-10 {
-    --particle-duration: 8.8s;
-    --particle-delay: -5.5s;
-
-    left: 76%;
-    top: 72%;
-}
-
-/* =================================
-   Inner star sparkles
-================================= */
+/* =========================================
+   Inner stars
+========================================= */
 
 .crystal-star {
     position: absolute;
 
-    color: #ffe6a4;
+    z-index: 4;
 
-    font-size: 17px;
+    color: #ffe5a1;
+
+    font-size: 15px;
     line-height: 1;
 
     text-shadow:
-        0 0 4px rgba(255, 250, 220, 1),
-        0 0 9px rgba(255, 201, 103, 1),
-        0 0 18px rgba(218, 101, 151, 0.9);
+        0 0 4px rgba(255, 251, 225, 1),
+        0 0 9px rgba(255, 200, 104, 1),
+        0 0 18px rgba(219, 103, 151, 0.95);
 
-    animation:
-        innerStarFloat
-        var(--star-duration)
-        ease-in-out
-        infinite;
+    opacity: 0.85;
 
-    animation-delay:
-        var(--star-delay);
-
-    will-change:
-        transform,
-        opacity;
+    will-change: transform, opacity;
 }
 
-.star-1 {
-    --star-duration: 6s;
-    --star-delay: -1s;
-
-    left: 35%;
-    top: 34%;
-}
-
-.star-2 {
-    --star-duration: 7.5s;
-    --star-delay: -3s;
-
-    left: 62%;
-    top: 49%;
-
-    font-size: 13px;
-}
-
-.star-3 {
-    --star-duration: 8s;
-    --star-delay: -5s;
-
-    left: 42%;
-    top: 64%;
-
-    font-size: 12px;
-}
-
-@keyframes particleDrift {
-
-    0% {
-        transform:
-            translate3d(-2px, 8px, 0)
-            scale(0.55);
-
-        opacity: 0.25;
-    }
-
-    25% {
-        opacity: 0.7;
-    }
-
-    50% {
-        transform:
-            translate3d(10px, -14px, 0)
-            scale(1.05);
-
-        opacity: 1;
-    }
-
-    75% {
-        opacity: 0.65;
-    }
-
-    100% {
-        transform:
-            translate3d(-8px, 6px, 0)
-            scale(0.55);
-
-        opacity: 0.25;
-    }
-}
-
-@keyframes innerStarFloat {
-
-    0% {
-        transform:
-            translate3d(0, 8px, 0)
-            rotate(-8deg)
-            scale(0.65);
-
-        opacity: 0.25;
-    }
-
-    50% {
-        transform:
-            translate3d(8px, -10px, 0)
-            rotate(8deg)
-            scale(1.1);
-
-        opacity: 1;
-    }
-
-    100% {
-        transform:
-            translate3d(-5px, 5px, 0)
-            rotate(-5deg)
-            scale(0.65);
-
-        opacity: 0.25;
-    }
-}
-
-/* =================================
-   Crystal shine
-================================= */
+/* =========================================
+   Shine
+========================================= */
 
 .crystal-shine {
     position: absolute;
@@ -738,15 +520,15 @@ body {
     width: 90px;
     height: 90px;
 
-    top: 28px;
-    left: 34px;
+    top: 27px;
+    left: 32px;
 
     border-radius: 50%;
 
     background:
         radial-gradient(
             circle,
-            rgba(255, 255, 255, 0.96),
+            rgba(255, 255, 255, 0.95),
             rgba(255, 255, 255, 0)
         );
 
@@ -756,11 +538,11 @@ body {
 
     pointer-events: none;
 
-    z-index: 4;
+    z-index: 7;
 
     transition:
-        transform 1s ease,
-        opacity 1s ease;
+        transform 0.8s ease,
+        opacity 0.8s ease;
 }
 
 .crystal-highlight {
@@ -769,29 +551,29 @@ body {
     width: 18px;
     height: 110px;
 
-    top: 48px;
-    right: 56px;
+    top: 47px;
+    right: 55px;
 
     border-radius: 999px;
 
-    background: rgba(255, 255, 255, 0.54);
+    background: rgba(255, 255, 255, 0.55);
 
     transform: rotate(-24deg);
 
     filter: blur(1px);
 
-    opacity: 0.88;
+    opacity: 0.86;
 
     pointer-events: none;
 
-    z-index: 6;
+    z-index: 8;
 }
 
-/* =================================
+/* =========================================
    Crystal idle animation
-================================= */
+========================================= */
 
-@keyframes floatCrystal {
+@keyframes crystalFloat {
 
     0% {
         transform:
@@ -800,27 +582,13 @@ body {
             scale(1);
     }
 
-    25% {
-        transform:
-            translate3d(0, -6px, 0)
-            rotate(0.6deg)
-            scale(1.01);
-    }
-
     50% {
         transform:
-            translate3d(0, -10px, 0)
+            translate3d(0, -9px, 0)
             rotate(1.2deg)
             scale(1.015);
     }
 
-    75% {
-        transform:
-            translate3d(0, -5px, 0)
-            rotate(-0.5deg)
-            scale(1.01);
-    }
-
     100% {
         transform:
             translate3d(0, 0, 0)
@@ -829,179 +597,78 @@ body {
     }
 }
 
-/* =================================
-   Awakening state
-================================= */
+/* =========================================
+   Awakening
+========================================= */
 
 .crystal.is-awakening {
     animation:
-        crystalAwakening
-        2.6s
+        crystalAwaken
+        1.4s
         ease-in-out
         forwards;
 
     box-shadow:
-        inset 0 0 48px rgba(255, 255, 255, 0.82),
-        inset 0 -20px 40px rgba(255, 255, 255, 0.28),
+        inset 0 0 45px rgba(255, 255, 255, 0.78),
+        inset 0 -20px 40px rgba(255, 255, 255, 0.2),
         0 30px 60px rgba(104, 35, 75, 0.25),
-        0 0 80px rgba(255, 221, 238, 1),
-        0 0 140px rgba(239, 136, 181, 0.72);
+        0 0 80px rgba(255, 223, 239, 1),
+        0 0 135px rgba(234, 125, 174, 0.82);
 }
 
-.crystal.is-awakening::after {
-    opacity: 0.15;
-}
-
-.crystal.is-awakening .crystal-depth {
-    transform: scale(1.18);
-
-    opacity: 0.75;
-}
-
-.crystal.is-awakening .crystal-particles {
-    opacity: 1;
+.crystal.is-awakening .crystal-inner {
+    background:
+        radial-gradient(
+            circle at 50% 55%,
+            rgba(130, 43, 94, 0.48) 0%,
+            rgba(176, 62, 120, 0.34) 35%,
+            rgba(223, 128, 166, 0.14) 65%,
+            rgba(255, 255, 255, 0) 100%
+        );
 }
 
 .crystal.is-awakening .crystal-particle {
-    animation:
-        particleAwaken
-        1.35s
-        ease-in-out
-        infinite;
-
     box-shadow:
-        0 0 6px rgba(255, 250, 218, 1),
-        0 0 13px rgba(255, 208, 111, 1),
-        0 0 24px rgba(223, 104, 157, 1),
-        0 0 34px rgba(166, 68, 115, 0.75);
-}
-
-.crystal.is-awakening .crystal-star {
-    animation:
-        starAwaken
-        1.2s
-        ease-in-out
-        infinite;
-
-    text-shadow:
-        0 0 5px rgba(255, 255, 235, 1),
-        0 0 12px rgba(255, 207, 112, 1),
-        0 0 25px rgba(225, 107, 158, 1);
-}
-
-.crystal.is-awakening .crystal-shine {
-    transform: scale(1.45);
+        0 0 7px rgba(255, 252, 225, 1),
+        0 0 14px rgba(255, 209, 109, 1),
+        0 0 25px rgba(226, 103, 155, 1),
+        0 0 36px rgba(161, 61, 112, 0.8);
 
     opacity: 1;
 }
 
-@keyframes crystalAwakening {
+.crystal.is-awakening .crystal-shine {
+    transform: scale(1.5);
+
+    opacity: 1;
+}
+
+@keyframes crystalAwaken {
 
     0% {
-        transform:
-            translate3d(0, 0, 0)
-            scale(1)
-            rotate(0deg);
+        transform: scale(1);
     }
 
-    30% {
-        transform:
-            translate3d(0, -4px, 0)
-            scale(1.025)
-            rotate(-0.5deg);
-    }
-
-    58% {
-        transform:
-            translate3d(0, -7px, 0)
-            scale(1.055)
-            rotate(0.6deg);
-    }
-
-    82% {
-        transform:
-            translate3d(0, -3px, 0)
-            scale(1.025)
-            rotate(-0.3deg);
+    45% {
+        transform: scale(1.055);
     }
 
     100% {
-        transform:
-            translate3d(0, 0, 0)
-            scale(1)
-            rotate(0deg);
+        transform: scale(1.025);
     }
 }
 
-@keyframes particleAwaken {
-
-    0% {
-        transform:
-            translate3d(-4px, 12px, 0)
-            scale(0.55);
-
-        opacity: 0.2;
-    }
-
-    50% {
-        transform:
-            translate3d(18px, -23px, 0)
-            scale(1.45);
-
-        opacity: 1;
-    }
-
-    100% {
-        transform:
-            translate3d(-13px, 14px, 0)
-            scale(0.65);
-
-        opacity: 0.25;
-    }
-}
-
-@keyframes starAwaken {
-
-    0% {
-        transform:
-            translate3d(0, 7px, 0)
-            rotate(-12deg)
-            scale(0.65);
-
-        opacity: 0.3;
-    }
-
-    50% {
-        transform:
-            translate3d(12px, -16px, 0)
-            rotate(12deg)
-            scale(1.45);
-
-        opacity: 1;
-    }
-
-    100% {
-        transform:
-            translate3d(-8px, 8px, 0)
-            rotate(-8deg)
-            scale(0.7);
-
-        opacity: 0.25;
-    }
-}
-
-/* =================================
-   Instruction
-================================= */
+/* =========================================
+   Hint
+========================================= */
 
 .hint {
-    position: relative;
-
-    margin-top: 32px;
-
     display: inline-flex;
     align-items: center;
+
     gap: 9px;
+
+    margin-top: 32px;
 
     font-size: 1.1rem;
     line-height: 1.2;
@@ -1011,8 +678,6 @@ body {
     letter-spacing: 0.01em;
 
     color: #21171c;
-
-    text-shadow: none;
 
     user-select: none;
     -webkit-user-select: none;
@@ -1025,22 +690,20 @@ body {
 .hint-symbol {
     color: #9c542d;
 
-    font-size: 0.85em;
-
     text-shadow:
         0 0 4px rgba(255, 218, 151, 0.95),
         0 0 10px rgba(220, 119, 99, 0.7);
 }
 
 .crystal-wrapper.is-awakening .hint {
-    opacity: 0.28;
+    opacity: 0.25;
 
     transform: translateY(5px);
 }
 
-/* =================================
+/* =========================================
    Mobile
-================================= */
+========================================= */
 
 @media (max-width: 600px) {
 
@@ -1049,34 +712,29 @@ body {
         height: 200px;
     }
 
-    .crystal-particles {
-        inset: 21px;
-    }
-
-    .crystal-depth {
-        inset: 26px;
+    .crystal-inner {
+        inset: 17px;
     }
 
     .crystal-shine {
         width: 74px;
         height: 74px;
+
+        top: 23px;
+        left: 27px;
     }
 
     .crystal-highlight {
         height: 92px;
 
-        top: 42px;
-        right: 48px;
+        top: 40px;
+        right: 46px;
     }
 
     .hint {
         margin-top: 28px;
 
         font-size: 1.05rem;
-    }
-
-    .crystal-star {
-        font-size: 15px;
     }
 
     .sparkle-1 {
@@ -1096,20 +754,14 @@ body {
     }
 }
 
-/* =================================
+/* =========================================
    Reduced motion
-================================= */
+========================================= */
 
 @media (prefers-reduced-motion: reduce) {
 
     .crystal,
-    .sparkle,
-    .crystal-particle,
-    .crystal-star {
-        animation: none;
-    }
-
-    .crystal.is-awakening {
+    .sparkle {
         animation: none;
     }
 }
