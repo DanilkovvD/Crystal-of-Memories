@@ -1,111 +1,84 @@
 const crystal = document.querySelector(".crystal");
 const crystalWrapper = document.querySelector(".crystal-wrapper");
 const particlesContainer = document.querySelector(".crystal-particles");
-
-const PARTICLE_COUNT = 18;
-
+const PARTICLE_COUNT = 24;
 let isAwakened = false;
-
 /* =========================================
    Random helper
 ========================================= */
-
 function random(min, max) {
     return Math.random() * (max - min) + min;
 }
-
 /* =========================================
-   Create moving crystal particles
+   Create particles
 ========================================= */
-
 function createParticles() {
     particlesContainer.innerHTML = "";
-
     for (let i = 0; i < PARTICLE_COUNT; i += 1) {
         const particle = document.createElement("span");
-
         particle.className = "crystal-particle";
-
-        const size = random(3, 5.5);
-
-        const left = random(8, 84);
-        const top = random(8, 84);
-
-        const moveXStart = `${random(-8, -2)}px`;
-        const moveYStart = `${random(4, 10)}px`;
-
-        const moveXMid = `${random(3, 12)}px`;
-        const moveYMid = `${random(-10, -3)}px`;
-
-        const moveXEnd = `${random(-10, -3)}px`;
-        const moveYEnd = `${random(2, 10)}px`;
-
-        const duration = random(5, 9);
-        const delay = random(-8, 0);
-
+        /*
+         * Каждая частица получает:
+         * - собственную позицию;
+         * - собственную траекторию;
+         * - собственную скорость;
+         * - собственную задержку.
+         *
+         * Движение полностью выполняется CSS,
+         * поэтому JavaScript не нагружает iPhone.
+         */
         particle.style.setProperty(
             "--size",
-            `${size}px`
+            `${random(4, 6)}px`
         );
-
         particle.style.setProperty(
             "--left",
-            `${left}%`
+            `${random(10, 84)}%`
         );
-
         particle.style.setProperty(
             "--top",
-            `${top}%`
+            `${random(10, 84)}%`
         );
-
         particle.style.setProperty(
-            "--move-x-start",
-            moveXStart
+            "--x1",
+            `${random(-9, -2)}px`
         );
-
         particle.style.setProperty(
-            "--move-y-start",
-            moveYStart
+            "--y1",
+            `${random(3, 9)}px`
         );
-
         particle.style.setProperty(
-            "--move-x-mid",
-            moveXMid
+            "--x2",
+            `${random(3, 11)}px`
         );
-
         particle.style.setProperty(
-            "--move-y-mid",
-            moveYMid
+            "--y2",
+            `${random(-11, -3)}px`
         );
-
         particle.style.setProperty(
-            "--move-x-end",
-            moveXEnd
+            "--x3",
+            `${random(-10, -3)}px`
         );
-
         particle.style.setProperty(
-            "--move-y-end",
-            moveYEnd
+            "--y3",
+            `${random(3, 10)}px`
         );
-
         particle.style.setProperty(
             "--duration",
-            `${duration}s`
+            `${random(5, 8)}s`
         );
-
         particle.style.setProperty(
             "--delay",
-            `${delay}s`
+            `${random(-8, 0)}s`
         );
-
-        particlesContainer.appendChild(particle);
+        particlesContainer.appendChild(
+            particle
+        );
     }
 }
-
 /* =========================================
-   Inner crystal stars
+   Inner stars
 ========================================= */
-
 function createInnerStars() {
     const stars = [
         {
@@ -133,66 +106,54 @@ function createInnerStars() {
             delay: "-2s"
         }
     ];
-
     stars.forEach((starData) => {
         const star = document.createElement("span");
-
         star.className = "crystal-star";
-
-        star.textContent = starData.symbol;
-
-        star.style.left = starData.left;
-        star.style.top = starData.top;
-
+        star.textContent =
+            starData.symbol;
+        star.style.left =
+            starData.left;
+        star.style.top =
+            starData.top;
         star.style.fontSize =
             starData.size;
-
         star.style.setProperty(
             "--star-duration",
             starData.duration
         );
-
         star.style.setProperty(
             "--star-delay",
             starData.delay
         );
-
-        particlesContainer.appendChild(star);
+        particlesContainer.appendChild(
+            star
+        );
     });
 }
-
 /* =========================================
    Crystal awakening
 ========================================= */
-
 function awakenCrystal() {
     if (isAwakened) {
         return;
     }
-
     isAwakened = true;
-
     crystal.classList.add(
         "is-awakening"
     );
-
     crystalWrapper.classList.add(
         "is-awakening"
     );
 }
-
 /* =========================================
-   Start
+   Init
 ========================================= */
-
 function init() {
     createParticles();
     createInnerStars();
-
     crystal.addEventListener(
         "pointerdown",
         awakenCrystal
     );
 }
-
 init();
