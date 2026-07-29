@@ -24,11 +24,11 @@ body {
 
     background:
         radial-gradient(
-            circle at 50% 42%,
-            #f4cbdc 0%,
-            #edbed3 38%,
-            #e4aec7 70%,
-            #d9add0 100%
+            circle at 50% 43%,
+            #e8b6cc 0%,
+            #dba4bd 38%,
+            #cc91ae 70%,
+            #bd8eaf 100%
         );
 
     color: #ffffff;
@@ -60,7 +60,7 @@ body {
 }
 
 /* =================================
-   Background glow
+   Background atmosphere
 ================================= */
 
 .background-glow {
@@ -74,35 +74,35 @@ body {
 }
 
 .glow-1 {
-    width: 420px;
-    height: 420px;
+    width: 430px;
+    height: 430px;
 
-    top: -180px;
-    left: -130px;
+    top: -190px;
+    left: -140px;
 
-    background: rgba(255, 224, 237, 0.42);
+    background: rgba(255, 219, 235, 0.3);
 }
 
 .glow-2 {
-    width: 400px;
-    height: 400px;
+    width: 420px;
+    height: 420px;
 
-    right: -150px;
-    bottom: -130px;
+    right: -160px;
+    bottom: -140px;
 
-    background: rgba(177, 86, 137, 0.24);
+    background: rgba(121, 48, 91, 0.25);
 }
 
 .glow-3 {
-    width: 330px;
-    height: 330px;
+    width: 360px;
+    height: 360px;
 
     left: 50%;
-    top: 45%;
+    top: 44%;
 
     transform: translate(-50%, -50%);
 
-    background: rgba(255, 226, 239, 0.2);
+    background: rgba(255, 218, 234, 0.18);
 
     filter: blur(120px);
 }
@@ -138,7 +138,9 @@ body {
         opacity;
 }
 
-/* Star particles */
+/* ---------------------------------
+   Star sparkles
+--------------------------------- */
 
 .sparkle-star {
     font-family:
@@ -149,15 +151,18 @@ body {
 
     font-weight: 500;
 
-    color: #ffe0a8;
+    color: #ffe2a3;
 
     text-shadow:
-        0 0 4px rgba(255, 237, 188, 0.95),
-        0 0 10px rgba(255, 189, 116, 0.95),
-        0 0 20px rgba(207, 100, 143, 0.75);
+        0 0 3px rgba(255, 245, 205, 1),
+        0 0 8px rgba(255, 197, 104, 1),
+        0 0 16px rgba(236, 131, 164, 0.95),
+        0 0 28px rgba(154, 63, 111, 0.65);
 }
 
-/* Glowing points */
+/* ---------------------------------
+   Glowing particles
+--------------------------------- */
 
 .sparkle-dot {
     width: 5px;
@@ -165,15 +170,24 @@ body {
 
     border-radius: 50%;
 
-    background: #ffd994;
+    background:
+        radial-gradient(
+            circle,
+            #fff1bd 0%,
+            #ffd274 38%,
+            #d86c99 100%
+        );
 
     box-shadow:
-        0 0 5px rgba(255, 235, 179, 1),
-        0 0 11px rgba(255, 183, 106, 0.95),
-        0 0 20px rgba(199, 91, 137, 0.8);
+        0 0 4px rgba(255, 240, 190, 1),
+        0 0 9px rgba(255, 191, 91, 1),
+        0 0 17px rgba(224, 108, 151, 1),
+        0 0 26px rgba(126, 47, 88, 0.7);
 }
 
-/* Individual particles */
+/* ---------------------------------
+   Particle positions
+--------------------------------- */
 
 .sparkle-1 {
     --duration: 8s;
@@ -181,7 +195,7 @@ body {
     top: 18%;
     left: 16%;
 
-    font-size: 19px;
+    font-size: 20px;
 
     animation-delay: -2s;
 }
@@ -192,7 +206,7 @@ body {
     top: 28%;
     right: 15%;
 
-    font-size: 22px;
+    font-size: 23px;
 
     animation-delay: -5s;
 }
@@ -212,7 +226,7 @@ body {
     top: 72%;
     right: 18%;
 
-    font-size: 17px;
+    font-size: 18px;
 
     animation-delay: -7s;
 }
@@ -223,8 +237,8 @@ body {
     top: 17%;
     right: 34%;
 
-    width: 4px;
-    height: 4px;
+    width: 5px;
+    height: 5px;
 
     animation-delay: -1s;
 }
@@ -235,7 +249,7 @@ body {
     top: 53%;
     left: 21%;
 
-    font-size: 15px;
+    font-size: 16px;
 
     animation-delay: -6s;
 }
@@ -246,8 +260,8 @@ body {
     top: 42%;
     right: 10%;
 
-    width: 4px;
-    height: 4px;
+    width: 5px;
+    height: 5px;
 
     animation-delay: -4s;
 }
@@ -258,7 +272,7 @@ body {
     top: 78%;
     left: 37%;
 
-    font-size: 16px;
+    font-size: 17px;
 
     animation-delay: -5s;
 }
@@ -269,8 +283,8 @@ body {
     top: 34%;
     left: 28%;
 
-    width: 4px;
-    height: 4px;
+    width: 5px;
+    height: 5px;
 
     animation-delay: -8s;
 }
@@ -283,24 +297,24 @@ body {
             scale(0.65)
             rotate(-5deg);
 
-        opacity: 0.25;
+        opacity: 0.2;
     }
 
     25% {
-        opacity: 0.8;
+        opacity: 0.85;
     }
 
     50% {
         transform:
             translate3d(8px, -14px, 0)
-            scale(1.1)
+            scale(1.12)
             rotate(8deg);
 
         opacity: 1;
     }
 
     75% {
-        opacity: 0.6;
+        opacity: 0.65;
     }
 
     100% {
@@ -309,7 +323,7 @@ body {
             scale(0.65)
             rotate(-6deg);
 
-        opacity: 0.25;
+        opacity: 0.2;
     }
 }
 
@@ -339,21 +353,21 @@ body {
         radial-gradient(
             circle at 35% 30%,
             rgba(255, 255, 255, 0.98),
-            rgba(255, 245, 250, 0.36) 40%,
-            rgba(255, 220, 238, 0.18) 68%,
+            rgba(255, 242, 249, 0.38) 40%,
+            rgba(255, 215, 235, 0.18) 68%,
             rgba(255, 255, 255, 0.1) 100%
         );
 
-    border: 1px solid rgba(255, 255, 255, 0.74);
+    border: 1px solid rgba(255, 255, 255, 0.78);
 
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
 
     box-shadow:
-        inset 0 0 30px rgba(255, 255, 255, 0.58),
+        inset 0 0 30px rgba(255, 255, 255, 0.62),
         inset 0 -20px 35px rgba(255, 255, 255, 0.16),
-        0 30px 60px rgba(164, 68, 119, 0.3),
-        0 0 50px rgba(255, 235, 245, 0.5);
+        0 30px 60px rgba(104, 35, 75, 0.32),
+        0 0 55px rgba(255, 231, 243, 0.55);
 
     animation:
         floatCrystal
@@ -372,7 +386,7 @@ body {
 
     border-radius: 50%;
 
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.32);
 }
 
 .crystal-shine {
@@ -409,13 +423,13 @@ body {
 
     border-radius: 999px;
 
-    background: rgba(255, 255, 255, 0.52);
+    background: rgba(255, 255, 255, 0.54);
 
     transform: rotate(-24deg);
 
     filter: blur(1px);
 
-    opacity: 0.86;
+    opacity: 0.88;
 }
 
 @keyframes floatCrystal {
@@ -457,7 +471,7 @@ body {
 }
 
 /* =================================
-   Hint
+   Instruction
 ================================= */
 
 .hint {
@@ -465,23 +479,20 @@ body {
 
     margin-top: 32px;
 
-    padding: 10px 18px;
-
     display: inline-flex;
     align-items: center;
     gap: 9px;
 
-    font-size: 1.08rem;
+    font-size: 1.1rem;
     line-height: 1.2;
 
     font-weight: 600;
 
-    letter-spacing: 0.015em;
+    letter-spacing: 0.01em;
 
-    color: #302229;
+    color: #21171c;
 
-    text-shadow:
-        0 1px 1px rgba(255, 255, 255, 0.35);
+    text-shadow: none;
 
     user-select: none;
     -webkit-user-select: none;
@@ -493,37 +504,21 @@ body {
         infinite;
 }
 
-.hint::before {
-    content: "";
-
-    position: absolute;
-    inset: 0;
-
-    border-radius: 999px;
-
-    background: rgba(255, 239, 247, 0.3);
-
-    box-shadow:
-        0 4px 18px rgba(116, 45, 78, 0.08);
-
-    z-index: -1;
-}
-
 .hint-symbol {
-    color: #b66b35;
+    color: #9c542d;
 
     font-size: 0.85em;
 
     text-shadow:
-        0 0 5px rgba(255, 222, 166, 0.95),
-        0 0 12px rgba(224, 137, 109, 0.65);
+        0 0 4px rgba(255, 218, 151, 0.95),
+        0 0 10px rgba(220, 119, 99, 0.7);
 }
 
 @keyframes hintBreath {
 
     0%,
     100% {
-        opacity: 0.9;
+        opacity: 0.92;
     }
 
     50% {
@@ -557,11 +552,7 @@ body {
     .hint {
         margin-top: 28px;
 
-        padding: 10px 17px;
-
-        font-size: 1.03rem;
-
-        letter-spacing: 0.01em;
+        font-size: 1.05rem;
     }
 
     .sparkle-1 {
