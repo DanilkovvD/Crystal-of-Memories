@@ -25,10 +25,10 @@ body {
     background:
         radial-gradient(
             circle at 50% 42%,
-            #fff7fb 0%,
-            #ffeaf4 38%,
-            #ffd6e8 72%,
-            #f8d9f2 100%
+            #ffeef6 0%,
+            #ffe4f0 34%,
+            #ffd7e8 68%,
+            #f6d5ed 100%
         );
 
     color: #ffffff;
@@ -36,6 +36,10 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+
+/* =================================
+   Scene
+================================= */
 
 .scene {
     position: relative;
@@ -55,45 +59,57 @@ body {
         max(24px, env(safe-area-inset-bottom));
 }
 
-/* --------------------------------
-   Background
--------------------------------- */
+/* =================================
+   Background glow
+================================= */
 
 .background-glow {
     position: absolute;
 
     border-radius: 50%;
 
-    filter: blur(90px);
-
-    opacity: 0.55;
-
     pointer-events: none;
+
+    filter: blur(90px);
 }
 
 .glow-1 {
-    width: 420px;
-    height: 420px;
+    width: 390px;
+    height: 390px;
 
-    top: -120px;
-    left: -80px;
+    top: -150px;
+    left: -100px;
 
-    background: #ffffff;
+    background: rgba(255, 255, 255, 0.62);
 }
 
 .glow-2 {
-    width: 320px;
-    height: 320px;
+    width: 360px;
+    height: 360px;
 
-    right: -70px;
-    bottom: -80px;
+    right: -120px;
+    bottom: -110px;
 
-    background: #ffd3ea;
+    background: rgba(245, 176, 210, 0.42);
 }
 
-/* --------------------------------
+.glow-3 {
+    width: 280px;
+    height: 280px;
+
+    left: 50%;
+    top: 46%;
+
+    transform: translate(-50%, -50%);
+
+    background: rgba(255, 255, 255, 0.28);
+
+    filter: blur(100px);
+}
+
+/* =================================
    Sparkles
--------------------------------- */
+================================= */
 
 .sparkles {
     position: absolute;
@@ -109,120 +125,158 @@ body {
 
     display: block;
 
-    color: rgba(255, 255, 255, 0.75);
-
-    font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        sans-serif;
-
-    font-size: 14px;
-    line-height: 1;
-
-    text-shadow:
-        0 0 8px rgba(255, 255, 255, 0.9),
-        0 0 18px rgba(255, 214, 232, 0.8);
-
-    opacity: 0.45;
+    pointer-events: none;
 
     animation:
         sparkleFloat
         var(--duration)
         ease-in-out
         infinite;
+
+    will-change:
+        transform,
+        opacity;
+}
+
+.sparkle-star {
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    font-weight: 400;
+
+    color: rgba(255, 255, 255, 0.9);
+
+    text-shadow:
+        0 0 5px rgba(255, 255, 255, 0.95),
+        0 0 12px rgba(255, 196, 220, 0.9),
+        0 0 22px rgba(255, 218, 235, 0.7);
+}
+
+.sparkle-dot {
+    width: 4px;
+    height: 4px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.95);
+
+    box-shadow:
+        0 0 5px rgba(255, 255, 255, 1),
+        0 0 12px rgba(255, 190, 216, 0.95),
+        0 0 20px rgba(255, 220, 235, 0.7);
 }
 
 .sparkle-1 {
-    --duration: 7s;
+    --duration: 8s;
 
-    top: 22%;
-    left: 18%;
+    top: 19%;
+    left: 17%;
 
-    font-size: 12px;
+    font-size: 14px;
+
     animation-delay: -2s;
 }
 
 .sparkle-2 {
-    --duration: 9s;
+    --duration: 10s;
 
-    top: 31%;
-    right: 17%;
+    top: 29%;
+    right: 16%;
 
-    font-size: 16px;
+    font-size: 17px;
+
     animation-delay: -5s;
 }
 
 .sparkle-3 {
-    --duration: 8s;
+    --duration: 7s;
 
-    top: 67%;
+    top: 63%;
     left: 13%;
 
-    font-size: 10px;
-    animation-delay: -4s;
+    animation-delay: -3s;
 }
 
 .sparkle-4 {
-    --duration: 10s;
+    --duration: 9s;
 
     top: 72%;
-    right: 20%;
+    right: 19%;
 
     font-size: 13px;
+
     animation-delay: -7s;
 }
 
 .sparkle-5 {
-    --duration: 8.5s;
+    --duration: 8s;
 
-    top: 18%;
-    right: 35%;
+    top: 17%;
+    right: 34%;
 
-    font-size: 9px;
+    width: 3px;
+    height: 3px;
+
     animation-delay: -1s;
 }
 
 .sparkle-6 {
-    --duration: 6.5s;
+    --duration: 11s;
 
-    top: 58%;
-    left: 28%;
+    top: 52%;
+    left: 22%;
 
-    font-size: 20px;
-    opacity: 0.3;
-    animation-delay: -3s;
-}
+    font-size: 11px;
 
-.sparkle-7 {
-    --duration: 9.5s;
-
-    top: 43%;
-    right: 11%;
-
-    font-size: 10px;
     animation-delay: -6s;
 }
 
+.sparkle-7 {
+    --duration: 9s;
+
+    top: 42%;
+    right: 10%;
+
+    width: 3px;
+    height: 3px;
+
+    animation-delay: -4s;
+}
+
 .sparkle-8 {
-    --duration: 7.5s;
+    --duration: 8.5s;
 
     top: 78%;
-    left: 38%;
+    left: 37%;
 
-    font-size: 16px;
-    opacity: 0.28;
+    font-size: 12px;
+
     animation-delay: -5s;
+}
+
+.sparkle-9 {
+    --duration: 10s;
+
+    top: 34%;
+    left: 28%;
+
+    width: 3px;
+    height: 3px;
+
+    animation-delay: -8s;
 }
 
 @keyframes sparkleFloat {
     0% {
         transform:
-            translate3d(0, 0, 0)
-            scale(0.8)
-            rotate(0deg);
+            translate3d(0, 6px, 0)
+            scale(0.7)
+            rotate(-4deg);
 
-        opacity: 0.2;
+        opacity: 0.15;
     }
 
     25% {
@@ -231,30 +285,30 @@ body {
 
     50% {
         transform:
-            translate3d(5px, -10px, 0)
-            scale(1)
-            rotate(8deg);
+            translate3d(7px, -12px, 0)
+            scale(1.05)
+            rotate(7deg);
 
-        opacity: 0.9;
+        opacity: 1;
     }
 
     75% {
-        opacity: 0.45;
+        opacity: 0.5;
     }
 
     100% {
         transform:
-            translate3d(-4px, 4px, 0)
-            scale(0.8)
-            rotate(-6deg);
+            translate3d(-5px, 3px, 0)
+            scale(0.7)
+            rotate(-5deg);
 
-        opacity: 0.2;
+        opacity: 0.15;
     }
 }
 
-/* --------------------------------
+/* =================================
    Crystal
--------------------------------- */
+================================= */
 
 .crystal-wrapper {
     position: relative;
@@ -277,22 +331,22 @@ body {
     background:
         radial-gradient(
             circle at 35% 30%,
-            rgba(255, 255, 255, 0.95),
-            rgba(255, 255, 255, 0.25) 42%,
-            rgba(255, 255, 255, 0.12) 70%,
-            rgba(255, 255, 255, 0.08)
+            rgba(255, 255, 255, 0.98),
+            rgba(255, 255, 255, 0.3) 40%,
+            rgba(255, 238, 247, 0.18) 68%,
+            rgba(255, 255, 255, 0.1) 100%
         );
 
-    border: 1px solid rgba(255, 255, 255, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.65);
 
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
 
     box-shadow:
-        inset 0 0 30px rgba(255, 255, 255, 0.45),
-        inset 0 -20px 35px rgba(255, 255, 255, 0.12),
-        0 30px 60px rgba(230, 120, 170, 0.22),
-        0 0 45px rgba(255, 255, 255, 0.35);
+        inset 0 0 30px rgba(255, 255, 255, 0.55),
+        inset 0 -20px 35px rgba(255, 255, 255, 0.14),
+        0 30px 60px rgba(218, 111, 160, 0.24),
+        0 0 50px rgba(255, 255, 255, 0.42);
 
     animation:
         floatCrystal
@@ -311,7 +365,7 @@ body {
 
     border-radius: 50%;
 
-    border: 1px solid rgba(255, 255, 255, 0.22);
+    border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
 .crystal-shine {
@@ -328,13 +382,13 @@ body {
     background:
         radial-gradient(
             circle,
-            rgba(255, 255, 255, 0.95),
+            rgba(255, 255, 255, 0.98),
             rgba(255, 255, 255, 0)
         );
 
     filter: blur(6px);
 
-    opacity: 0.75;
+    opacity: 0.8;
 }
 
 .crystal-highlight {
@@ -348,13 +402,13 @@ body {
 
     border-radius: 999px;
 
-    background: rgba(255, 255, 255, 0.45);
+    background: rgba(255, 255, 255, 0.5);
 
     transform: rotate(-24deg);
 
     filter: blur(1px);
 
-    opacity: 0.8;
+    opacity: 0.85;
 }
 
 @keyframes floatCrystal {
@@ -394,26 +448,32 @@ body {
     }
 }
 
-/* --------------------------------
+/* =================================
    Hint
--------------------------------- */
+================================= */
 
 .hint {
+    position: relative;
+
     margin-top: 32px;
 
+    padding: 10px 18px;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+
     font-size: 1.1rem;
-    line-height: 1.3;
+    line-height: 1.2;
 
     font-weight: 600;
 
-    letter-spacing: 0.045em;
+    letter-spacing: 0.035em;
 
-    color: rgba(255, 255, 255, 0.96);
+    color: #a94f78;
 
     text-shadow:
-        0 1px 4px rgba(196, 91, 143, 0.18),
-        0 0 14px rgba(255, 255, 255, 0.7),
-        0 0 28px rgba(255, 218, 235, 0.75);
+        0 1px 2px rgba(255, 255, 255, 0.7);
 
     user-select: none;
 
@@ -426,10 +486,35 @@ body {
         infinite;
 }
 
+.hint::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    border-radius: 999px;
+
+    background: rgba(255, 255, 255, 0.22);
+
+    filter: blur(10px);
+
+    z-index: -1;
+}
+
+.hint-symbol {
+    color: #c77a9d;
+
+    font-size: 0.85em;
+
+    text-shadow:
+        0 0 7px rgba(255, 255, 255, 0.8),
+        0 0 14px rgba(239, 155, 188, 0.6);
+}
+
 @keyframes hintGlow {
     0%,
     100% {
-        opacity: 0.88;
+        opacity: 0.86;
     }
 
     50% {
@@ -437,9 +522,9 @@ body {
     }
 }
 
-/* --------------------------------
+/* =================================
    Mobile
--------------------------------- */
+================================= */
 
 @media (max-width: 600px) {
     .crystal {
@@ -462,31 +547,33 @@ body {
     .hint {
         margin-top: 28px;
 
-        font-size: 1rem;
+        padding: 9px 16px;
 
-        letter-spacing: 0.04em;
+        font-size: 1.05rem;
+
+        letter-spacing: 0.03em;
     }
 
     .sparkle-1 {
-        left: 12%;
+        left: 10%;
     }
 
     .sparkle-2 {
-        right: 11%;
+        right: 9%;
     }
 
     .sparkle-3 {
-        left: 9%;
+        left: 7%;
     }
 
     .sparkle-4 {
-        right: 12%;
+        right: 10%;
     }
 }
 
-/* --------------------------------
+/* =================================
    Reduced motion
--------------------------------- */
+================================= */
 
 @media (prefers-reduced-motion: reduce) {
     .crystal,
