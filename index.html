@@ -10,42 +10,98 @@
 
     <meta
         name="theme-color"
-        content="#D79AB5"
+        content="#dba0ba"
     >
 
     <title>Crystal of Memories</title>
 
-    <link rel="stylesheet" href="css/style.css">
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
 </head>
 
 <body>
 
     <main class="scene">
 
-        <div class="background-glow glow-1"></div>
-        <div class="background-glow glow-2"></div>
-        <div class="background-glow glow-3"></div>
+        <!-- Background atmosphere -->
 
-        <div class="sparkles" aria-hidden="true">
+        <div
+            class="background-glow glow-1"
+            aria-hidden="true"
+        ></div>
 
-            <span class="sparkle sparkle-star sparkle-1">✦</span>
-            <span class="sparkle sparkle-star sparkle-2">✧</span>
-            <span class="sparkle sparkle-dot sparkle-3"></span>
-            <span class="sparkle sparkle-star sparkle-4">✦</span>
-            <span class="sparkle sparkle-dot sparkle-5"></span>
-            <span class="sparkle sparkle-star sparkle-6">✧</span>
-            <span class="sparkle sparkle-dot sparkle-7"></span>
-            <span class="sparkle sparkle-star sparkle-8">✦</span>
-            <span class="sparkle sparkle-dot sparkle-9"></span>
+        <div
+            class="background-glow glow-2"
+            aria-hidden="true"
+        ></div>
+
+        <div
+            class="background-glow glow-3"
+            aria-hidden="true"
+        ></div>
+
+
+        <!-- External sparkles -->
+
+        <div
+            class="sparkles"
+            aria-hidden="true"
+        >
+
+            <span class="sparkle sparkle-star sparkle-1">
+                ✦
+            </span>
+
+            <span class="sparkle sparkle-dot sparkle-2"></span>
+
+            <span class="sparkle sparkle-star sparkle-3">
+                ✧
+            </span>
+
+            <span class="sparkle sparkle-dot sparkle-4"></span>
+
+            <span class="sparkle sparkle-star sparkle-5">
+                ✦
+            </span>
+
+            <span class="sparkle sparkle-dot sparkle-6"></span>
+
+            <span class="sparkle sparkle-star sparkle-7">
+                ✧
+            </span>
+
+            <span class="sparkle sparkle-dot sparkle-8"></span>
+
+            <span class="sparkle sparkle-star sparkle-9">
+                ✦
+            </span>
 
         </div>
 
-        <section class="crystal-wrapper">
+
+        <!-- Main artifact -->
+
+        <section
+            class="crystal-wrapper"
+            aria-label="Crystal of Memories"
+        >
+
+            <!-- Energy ring -->
+
+            <div
+                class="crystal-energy-ring"
+                aria-hidden="true"
+            ></div>
+
+
+            <!-- Crystal -->
 
             <button
                 class="crystal"
                 type="button"
-                aria-label="Нажми на Кристалл"
+                aria-label="Нажми на кристалл"
             >
 
                 <div class="crystal-inner">
@@ -55,23 +111,88 @@
                         aria-hidden="true"
                     ></div>
 
-                </div>
+                    <div
+                        class="crystal-shine"
+                        aria-hidden="true"
+                    ></div>
 
-                <div class="crystal-shine"></div>
-                <div class="crystal-highlight"></div>
+                    <div
+                        class="crystal-highlight"
+                        aria-hidden="true"
+                    ></div>
+
+                </div>
 
             </button>
 
-            <p class="hint">
-                <span>Нажми на Кристалл</span>
-                <span class="hint-symbol" aria-hidden="true">✦</span>
-            </p>
+
+            <!-- Hint -->
+
+            <div class="hint">
+                <span>Нажми на кристалл</span>
+
+                <span
+                    class="hint-symbol"
+                    aria-hidden="true"
+                >
+                    ✨
+                </span>
+            </div>
+
+
+            <!-- Memory materialization -->
+
+            <div
+                class="memory-materialization"
+                aria-hidden="true"
+            >
+
+                <div class="memory-energy"></div>
+
+                <div class="memory-sparks">
+
+                    <span>✦</span>
+                    <span>✧</span>
+                    <span>✦</span>
+                    <span>✧</span>
+                    <span>✦</span>
+                    <span>✧</span>
+
+                </div>
+
+            </div>
+
+
+            <!-- Memory card -->
+
+            <article class="memory-card">
+
+                <div class="memory-card-glow"></div>
+
+                <div class="memory-card-shine"></div>
+
+                <div class="memory-card-content">
+
+                    <div class="memory-card-symbol">
+                        ✦
+                    </div>
+
+                    <p class="memory-message">
+                        Сегодня я скучаю по тебе немного
+                        сильнее, чем вчера ❤️
+                    </p>
+
+                </div>
+
+            </article>
 
         </section>
 
     </main>
 
-    <script src="js/app.js"></script>
+    <script
+        src="js/app.js"
+    ></script>
 
 </body>
 </html>

@@ -5,13 +5,16 @@
     margin: 0;
     padding: 0;
 }
+
 html,
 body {
     width: 100%;
     height: 100%;
 }
+
 body {
     overflow: hidden;
+
     font-family:
         -apple-system,
         BlinkMacSystemFont,
@@ -19,8 +22,10 @@ body {
         "SF Pro Text",
         "Segoe UI",
         sans-serif;
+
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+
     background:
         radial-gradient(
             circle at 50% 42%,
@@ -29,89 +34,126 @@ body {
             #cc8fac 70%,
             #bc89aa 100%
         );
+
     color: #21171c;
 }
+
 /* =========================================
    Scene
 ========================================= */
+
 .scene {
     position: relative;
+
     width: 100%;
     height: 100%;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     overflow: hidden;
+
     padding:
         max(24px, env(safe-area-inset-top))
         24px
         max(24px, env(safe-area-inset-bottom));
 }
+
 /* =========================================
    Background atmosphere
 ========================================= */
+
 .background-glow {
     position: absolute;
+
     border-radius: 50%;
+
     pointer-events: none;
+
     filter: blur(100px);
 }
+
 .glow-1 {
     width: 430px;
     height: 430px;
+
     top: -190px;
     left: -140px;
+
     background: rgba(255, 220, 235, 0.28);
 }
+
 .glow-2 {
     width: 420px;
     height: 420px;
+
     right: -160px;
     bottom: -140px;
+
     background: rgba(111, 43, 83, 0.25);
 }
+
 .glow-3 {
     width: 360px;
     height: 360px;
+
     left: 50%;
     top: 44%;
+
     transform: translate(-50%, -50%);
+
     background: rgba(255, 218, 234, 0.16);
+
     filter: blur(120px);
 }
+
 /* =========================================
    External sparkles
 ========================================= */
+
 .sparkles {
     position: absolute;
     inset: 0;
+
     overflow: hidden;
+
     pointer-events: none;
 }
+
 .sparkle {
     position: absolute;
+
     pointer-events: none;
+
     animation:
         sparkleFloat
         var(--duration)
         ease-in-out
         infinite;
+
     will-change: transform, opacity;
 }
+
 .sparkle-star {
     color: #ffe2a3;
+
     font-size: 20px;
     font-weight: 500;
+
     text-shadow:
         0 0 3px rgba(255, 248, 218, 1),
         0 0 8px rgba(255, 197, 104, 1),
         0 0 16px rgba(236, 131, 164, 0.95),
         0 0 28px rgba(154, 63, 111, 0.65);
 }
+
 .sparkle-dot {
     width: 5px;
     height: 5px;
+
     border-radius: 50%;
+
     background:
         radial-gradient(
             circle,
@@ -119,18 +161,21 @@ body {
             #ffd274 38%,
             #d86c99 100%
         );
+
     box-shadow:
         0 0 4px rgba(255, 240, 190, 1),
         0 0 9px rgba(255, 191, 91, 1),
         0 0 17px rgba(224, 108, 151, 1),
         0 0 26px rgba(126, 47, 88, 0.7);
 }
+
 .sparkle-1 {
     --duration: 8s;
     top: 18%;
     left: 16%;
     animation-delay: -2s;
 }
+
 .sparkle-2 {
     --duration: 10s;
     top: 28%;
@@ -138,12 +183,14 @@ body {
     font-size: 23px;
     animation-delay: -5s;
 }
+
 .sparkle-3 {
     --duration: 7s;
     top: 63%;
     left: 13%;
     animation-delay: -3s;
 }
+
 .sparkle-4 {
     --duration: 9s;
     top: 72%;
@@ -151,12 +198,14 @@ body {
     font-size: 18px;
     animation-delay: -7s;
 }
+
 .sparkle-5 {
     --duration: 8s;
     top: 17%;
     right: 34%;
     animation-delay: -1s;
 }
+
 .sparkle-6 {
     --duration: 11s;
     top: 53%;
@@ -164,12 +213,14 @@ body {
     font-size: 16px;
     animation-delay: -6s;
 }
+
 .sparkle-7 {
     --duration: 9s;
     top: 42%;
     right: 10%;
     animation-delay: -4s;
 }
+
 .sparkle-8 {
     --duration: 8.5s;
     top: 78%;
@@ -177,59 +228,80 @@ body {
     font-size: 17px;
     animation-delay: -5s;
 }
+
 .sparkle-9 {
     --duration: 10s;
     top: 34%;
     left: 28%;
     animation-delay: -8s;
 }
+
 @keyframes sparkleFloat {
+
     0% {
         transform:
             translate3d(0, 6px, 0)
             scale(0.65)
             rotate(-5deg);
+
         opacity: 0.2;
     }
+
     50% {
         transform:
             translate3d(8px, -14px, 0)
             scale(1.12)
             rotate(8deg);
+
         opacity: 1;
     }
+
     100% {
         transform:
             translate3d(-6px, 4px, 0)
             scale(0.65)
             rotate(-6deg);
+
         opacity: 0.2;
     }
 }
+
 /* =========================================
    Crystal wrapper
 ========================================= */
+
 .crystal-wrapper {
     position: relative;
     z-index: 5;
+
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+
 /* =========================================
    Crystal
 ========================================= */
+
 .crystal {
     position: relative;
+    z-index: 10;
+
     width: 240px;
     height: 240px;
+
     padding: 0;
     border: 0;
+
     border-radius: 50%;
+
     overflow: hidden;
+
     appearance: none;
     -webkit-appearance: none;
+
     cursor: pointer;
+
     background:
         radial-gradient(
             circle at 34% 27%,
@@ -238,47 +310,62 @@ body {
             rgba(239, 180, 209, 0.72) 57%,
             rgba(198, 103, 151, 0.68) 100%
         );
+
     border: 1px solid rgba(255, 255, 255, 0.8);
+
     box-shadow:
         inset 0 0 35px rgba(255, 255, 255, 0.62),
         inset 0 -20px 38px rgba(255, 255, 255, 0.15),
         0 30px 60px rgba(104, 35, 75, 0.32),
         0 0 55px rgba(255, 231, 243, 0.5);
+
     animation:
         crystalFloat
         7s
         ease-in-out
         infinite;
+
     -webkit-tap-highlight-color: transparent;
+
     will-change: transform;
 }
+
 .crystal::before {
     content: "";
+
     position: absolute;
     inset: 8px;
+
     border-radius: 50%;
+
     border: 1px solid rgba(255, 255, 255, 0.34);
+
     pointer-events: none;
+
     z-index: 30;
 }
+
 .crystal:focus {
     outline: none;
 }
+
 .crystal:active {
     transform: scale(0.97);
 }
+
 /* =========================================
-   Inner crystal chamber
+   Inner crystal
 ========================================= */
+
 .crystal-inner {
     position: absolute;
+
     inset: 18px;
+
     border-radius: 50%;
+
     overflow: hidden;
-    /*
-     * Спящее состояние.
-     * Кристалл остаётся светлым и нежным.
-     */
+
     background:
         radial-gradient(
             circle at 50% 44%,
@@ -287,26 +374,26 @@ body {
             rgba(218, 158, 195, 0.58) 65%,
             rgba(193, 116, 163, 0.48) 100%
         );
+
     box-shadow:
         inset 0 0 35px rgba(255, 255, 255, 0.42),
         inset 0 0 12px rgba(255, 255, 255, 0.30);
+
     z-index: 2;
-    /*
-     * Главное изменение:
-     * цвет теперь переходит медленно.
-     */
+
     transition:
         background 2.2s cubic-bezier(0.22, 1, 0.36, 1),
         box-shadow 2.2s cubic-bezier(0.22, 1, 0.36, 1);
 }
-/* =========================================
-   Soft inner glow
-========================================= */
+
 .crystal-inner::before {
     content: "";
+
     position: absolute;
     inset: 0;
+
     border-radius: 50%;
+
     background:
         radial-gradient(
             circle at 50% 50%,
@@ -314,47 +401,65 @@ body {
             rgba(255, 225, 244, 0.12) 35%,
             rgba(255, 255, 255, 0) 70%
         );
+
     pointer-events: none;
+
     z-index: 1;
+
     transition:
         background 2.2s cubic-bezier(0.22, 1, 0.36, 1);
 }
+
 /* =========================================
-   Particle layer
+   Crystal particles
 ========================================= */
+
 .crystal-particles {
     position: absolute;
+
     inset: 0;
+
     overflow: hidden;
+
     border-radius: 50%;
+
     pointer-events: none;
+
     z-index: 5;
 }
-/* =========================================
-   Particles
-========================================= */
+
 .crystal-particle {
     position: absolute;
+
     width: var(--size);
     height: var(--size);
+
     left: var(--left);
     top: var(--top);
+
     border-radius: 50%;
+
     background: #f8f0ff;
+
     opacity: 0.95;
+
     box-shadow:
         0 0 4px #ffffff,
         0 0 8px #e7d4ff,
         0 0 13px #b98be8;
+
     animation:
         particleMove
         var(--duration)
         ease-in-out
         var(--delay)
         infinite alternate;
+
     will-change: transform;
 }
+
 @keyframes particleMove {
+
     0% {
         transform:
             translate3d(
@@ -363,8 +468,10 @@ body {
                 0
             )
             scale(0.7);
+
         opacity: 0.35;
     }
+
     50% {
         transform:
             translate3d(
@@ -373,8 +480,10 @@ body {
                 0
             )
             scale(1.2);
+
         opacity: 1;
     }
+
     100% {
         transform:
             translate3d(
@@ -383,113 +492,102 @@ body {
                 0
             )
             scale(0.75);
+
         opacity: 0.5;
     }
 }
+
 /* =========================================
-   Inner stars
+   Crystal glass highlights
 ========================================= */
-.crystal-star {
-    position: absolute;
-    z-index: 8;
-    color: #ffffff;
-    line-height: 1;
-    text-shadow:
-        0 0 4px #ffffff,
-        0 0 9px #eadbff,
-        0 0 16px #b98ce7;
-    animation:
-        innerStarFloat
-        var(--star-duration)
-        ease-in-out
-        var(--star-delay)
-        infinite;
-    will-change: transform, opacity;
-}
-@keyframes innerStarFloat {
-    0% {
-        transform:
-            translate3d(0, 4px, 0)
-            scale(0.7);
-        opacity: 0.25;
-    }
-    50% {
-        transform:
-            translate3d(5px, -8px, 0)
-            scale(1.15);
-        opacity: 1;
-    }
-    100% {
-        transform:
-            translate3d(-3px, 3px, 0)
-            scale(0.7);
-        opacity: 0.25;
-    }
-}
-/* =========================================
-   Glass highlights
-========================================= */
+
 .crystal-shine {
     position: absolute;
+
     width: 90px;
     height: 90px;
+
     top: 27px;
     left: 32px;
+
     border-radius: 50%;
+
     background:
         radial-gradient(
             circle,
             rgba(255, 255, 255, 0.95),
             rgba(255, 255, 255, 0)
         );
+
     filter: blur(6px);
+
     opacity: 0.72;
+
     pointer-events: none;
+
     z-index: 15;
 }
+
 .crystal-highlight {
     position: absolute;
+
     width: 18px;
     height: 110px;
+
     top: 47px;
     right: 55px;
+
     border-radius: 999px;
+
     background: rgba(255, 255, 255, 0.55);
+
     transform: rotate(-24deg);
+
     filter: blur(1px);
+
     opacity: 0.86;
+
     pointer-events: none;
+
     z-index: 16;
 }
+
 /* =========================================
    Crystal idle
 ========================================= */
+
 @keyframes crystalFloat {
+
     0% {
         transform:
             translate3d(0, 0, 0)
             rotate(-1.2deg);
     }
+
     50% {
         transform:
             translate3d(0, -9px, 0)
             rotate(1.2deg);
     }
+
     100% {
         transform:
             translate3d(0, 0, 0)
             rotate(-1.2deg);
     }
 }
+
 /* =========================================
    Awakening
 ========================================= */
+
 .crystal.is-awakening {
     animation:
         crystalAwaken
         1.5s
         ease-in-out
         forwards;
+
     box-shadow:
         inset 0 0 45px rgba(255, 255, 255, 0.8),
         inset 0 -20px 40px rgba(255, 255, 255, 0.2),
@@ -497,13 +595,7 @@ body {
         0 0 80px rgba(255, 223, 239, 1),
         0 0 135px rgba(201, 149, 244, 0.95);
 }
-/*
- * Пробуждение теперь происходит плавно.
- *
- * Благодаря transition: 2.2s выше,
- * внутренний цвет не проваливается
- * в тёмный сразу после касания.
- */
+
 .crystal.is-awakening .crystal-inner {
     background:
         radial-gradient(
@@ -513,10 +605,12 @@ body {
             rgba(171, 74, 146, 0.28) 67%,
             rgba(255, 255, 255, 0) 100%
         );
+
     box-shadow:
         inset 0 0 35px rgba(49, 22, 70, 0.38),
         inset 0 0 12px rgba(255, 255, 255, 0.22);
 }
+
 .crystal.is-awakening .crystal-inner::before {
     background:
         radial-gradient(
@@ -526,58 +620,140 @@ body {
             rgba(255, 255, 255, 0) 70%
         );
 }
+
 .crystal.is-awakening .crystal-particle {
     animation-duration: 1.7s;
+
     opacity: 1;
+
     box-shadow:
         0 0 5px #ffffff,
         0 0 10px #f2e8ff,
         0 0 18px #c49aef;
 }
+
 .crystal.is-awakening .crystal-shine {
     transform: scale(1.5);
+
     opacity: 1;
 }
+
 @keyframes crystalAwaken {
+
     0% {
         transform: scale(1);
     }
+
     40% {
         transform: scale(1.06);
     }
+
     70% {
         transform: scale(1.025);
     }
+
     100% {
         transform: scale(1.035);
     }
 }
+
+/* =========================================
+   Energy ring
+========================================= */
+
+.crystal-energy-ring {
+    position: absolute;
+
+    z-index: 1;
+
+    width: 250px;
+    height: 250px;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(255, 235, 247, 0.75);
+
+    opacity: 0;
+    transform: scale(0.65);
+
+    pointer-events: none;
+
+    box-shadow:
+        0 0 20px rgba(255, 232, 246, 0.5),
+        inset 0 0 20px rgba(255, 255, 255, 0.15);
+}
+
+.crystal-wrapper.is-awakening .crystal-energy-ring {
+    animation:
+        energyRing
+        1.7s
+        cubic-bezier(0.16, 1, 0.3, 1)
+        forwards;
+}
+
+@keyframes energyRing {
+
+    0% {
+        opacity: 0;
+
+        transform: scale(0.65);
+    }
+
+    20% {
+        opacity: 0.9;
+    }
+
+    65% {
+        opacity: 0.45;
+    }
+
+    100% {
+        opacity: 0;
+
+        transform: scale(1.65);
+    }
+}
+
 /* =========================================
    Hint
 ========================================= */
+
 .hint {
     position: relative;
+
     display: flex;
     flex-direction: column;
     align-items: center;
+
     margin-top: 30px;
+
     color: #21171c;
+
     font-size: 1.08rem;
     line-height: 1.2;
+
     font-weight: 600;
+
     letter-spacing: 0.01em;
+
     user-select: none;
     -webkit-user-select: none;
+
     transition:
-        opacity 0.7s ease,
-        transform 0.7s ease;
+        opacity 0.8s ease,
+        transform 0.8s ease;
 }
+
 .hint::after {
     content: "";
+
     width: 82px;
     height: 2px;
+
     margin-top: 12px;
+
     border-radius: 999px;
+
     background:
         linear-gradient(
             90deg,
@@ -586,83 +762,621 @@ body {
             rgba(132, 67, 98, 0)
         );
 }
+
 .hint-symbol {
     position: absolute;
+
     right: -24px;
     top: 1px;
+
     color: #9c542d;
+
     text-shadow:
         0 0 4px rgba(255, 218, 151, 0.95),
         0 0 10px rgba(220, 119, 99, 0.7);
 }
+
 .crystal-wrapper.is-awakening .hint {
-    opacity: 0.25;
-    transform: translateY(5px);
+    opacity: 0;
+
+    transform: translateY(10px);
 }
+
+/* =========================================
+   Memory materialization
+========================================= */
+
+.memory-materialization {
+    position: absolute;
+
+    z-index: 4;
+
+    top: 245px;
+
+    width: 320px;
+    height: 170px;
+
+    pointer-events: none;
+
+    opacity: 0;
+}
+
+.memory-energy {
+    position: absolute;
+
+    left: 50%;
+    top: 8px;
+
+    width: 110px;
+    height: 110px;
+
+    border-radius: 50%;
+
+    transform:
+        translateX(-50%)
+        scale(0.2);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255, 255, 255, 0.9) 0%,
+            rgba(246, 209, 239, 0.55) 22%,
+            rgba(191, 133, 218, 0.28) 48%,
+            rgba(255, 255, 255, 0) 72%
+        );
+
+    filter: blur(5px);
+}
+
+.memory-sparks {
+    position: absolute;
+    inset: 0;
+
+    pointer-events: none;
+}
+
+.memory-sparks span {
+    position: absolute;
+
+    color: #fff0c3;
+
+    font-size: 16px;
+
+    opacity: 0;
+
+    text-shadow:
+        0 0 5px #ffffff,
+        0 0 10px #ffd98c,
+        0 0 18px #d98ba9;
+}
+
+.memory-sparks span:nth-child(1) {
+    left: 25%;
+    top: 25%;
+}
+
+.memory-sparks span:nth-child(2) {
+    left: 70%;
+    top: 30%;
+}
+
+.memory-sparks span:nth-child(3) {
+    left: 18%;
+    top: 60%;
+}
+
+.memory-sparks span:nth-child(4) {
+    left: 78%;
+    top: 65%;
+}
+
+.memory-sparks span:nth-child(5) {
+    left: 42%;
+    top: 15%;
+}
+
+.memory-sparks span:nth-child(6) {
+    left: 58%;
+    top: 75%;
+}
+
+/* =========================================
+   Materialization trigger
+========================================= */
+
+.crystal-wrapper.is-awakening .memory-materialization {
+    animation:
+        materializationScene
+        2.8s
+        cubic-bezier(0.16, 1, 0.3, 1)
+        0.9s
+        forwards;
+}
+
+.crystal-wrapper.is-awakening .memory-energy {
+    animation:
+        memoryEnergy
+        2.2s
+        cubic-bezier(0.16, 1, 0.3, 1)
+        0.8s
+        forwards;
+}
+
+.crystal-wrapper.is-awakening .memory-sparks span {
+    animation:
+        memorySpark
+        1.8s
+        cubic-bezier(0.16, 1, 0.3, 1)
+        1s
+        forwards;
+}
+
+.crystal-wrapper.is-awakening .memory-sparks span:nth-child(2) {
+    animation-delay: 1.05s;
+}
+
+.crystal-wrapper.is-awakening .memory-sparks span:nth-child(3) {
+    animation-delay: 1.1s;
+}
+
+.crystal-wrapper.is-awakening .memory-sparks span:nth-child(4) {
+    animation-delay: 1.15s;
+}
+
+.crystal-wrapper.is-awakening .memory-sparks span:nth-child(5) {
+    animation-delay: 1.2s;
+}
+
+.crystal-wrapper.is-awakening .memory-sparks span:nth-child(6) {
+    animation-delay: 1.25s;
+}
+
+@keyframes materializationScene {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translateY(-10px)
+            scale(0.8);
+    }
+
+    18% {
+        opacity: 1;
+    }
+
+    45% {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1.03);
+    }
+
+    70% {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+@keyframes memoryEnergy {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translateX(-50%)
+            scale(0.2);
+    }
+
+    25% {
+        opacity: 1;
+    }
+
+    60% {
+        opacity: 0.75;
+
+        transform:
+            translateX(-50%)
+            scale(1.5);
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            translateX(-50%)
+            scale(2.5);
+    }
+}
+
+@keyframes memorySpark {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translate3d(0, 20px, 0)
+            scale(0.4)
+            rotate(0deg);
+    }
+
+    25% {
+        opacity: 1;
+    }
+
+    70% {
+        opacity: 0.8;
+
+        transform:
+            translate3d(
+                var(--spark-x, 0),
+                -18px,
+                0
+            )
+            scale(1.15)
+            rotate(18deg);
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            translate3d(
+                var(--spark-x, 0),
+                -32px,
+                0
+            )
+            scale(0.3)
+            rotate(40deg);
+    }
+}
+
+/* =========================================
+   Memory card
+========================================= */
+
+.memory-card {
+    position: absolute;
+
+    z-index: 3;
+
+    top: 270px;
+
+    width: min(340px, calc(100vw - 42px));
+
+    min-height: 150px;
+
+    padding: 30px 28px;
+
+    border-radius: 28px;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    opacity: 0;
+
+    transform:
+        translateY(20px)
+        scale(0.86);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 248, 253, 0.48),
+            rgba(241, 207, 231, 0.28)
+        );
+
+    border: 1px solid rgba(255, 255, 255, 0.52);
+
+    box-shadow:
+        0 25px 55px rgba(77, 27, 62, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6),
+        inset 0 0 35px rgba(255, 255, 255, 0.12);
+
+    -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: blur(24px);
+}
+
+.crystal-wrapper.is-awakening .memory-card {
+    animation:
+        memoryCardReveal
+        1.35s
+        cubic-bezier(0.16, 1, 0.3, 1)
+        1.65s
+        forwards;
+}
+
+@keyframes memoryCardReveal {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translateY(24px)
+            scale(0.82);
+    }
+
+    35% {
+        opacity: 1;
+
+        transform:
+            translateY(-4px)
+            scale(1.035);
+    }
+
+    60% {
+        transform:
+            translateY(0)
+            scale(0.99);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+/* =========================================
+   Card glow
+========================================= */
+
+.memory-card-glow {
+    position: absolute;
+
+    width: 190px;
+    height: 190px;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255, 222, 243, 0.48),
+            rgba(194, 138, 218, 0.15) 42%,
+            rgba(255, 255, 255, 0) 72%
+        );
+
+    filter: blur(15px);
+
+    pointer-events: none;
+}
+
+/* =========================================
+   Moving glass highlight
+========================================= */
+
+.memory-card-shine {
+    position: absolute;
+
+    top: -70px;
+    left: -130px;
+
+    width: 90px;
+    height: 320px;
+
+    transform: rotate(24deg);
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0),
+            rgba(255, 255, 255, 0.45),
+            rgba(255, 255, 255, 0)
+        );
+
+    filter: blur(5px);
+
+    opacity: 0;
+}
+
+.crystal-wrapper.is-awakening .memory-card-shine {
+    animation:
+        cardShine
+        1.4s
+        ease-out
+        2.2s
+        forwards;
+}
+
+@keyframes cardShine {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translateX(0)
+            rotate(24deg);
+    }
+
+    20% {
+        opacity: 0.8;
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            translateX(470px)
+            rotate(24deg);
+    }
+}
+
+/* =========================================
+   Card content
+========================================= */
+
+.memory-card-content {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+}
+
+.memory-card-symbol {
+    margin-bottom: 15px;
+
+    color: #fff3c7;
+
+    font-size: 18px;
+
+    text-shadow:
+        0 0 5px rgba(255, 255, 255, 0.9),
+        0 0 12px rgba(238, 177, 113, 0.8);
+}
+
+.memory-message {
+    max-width: 285px;
+
+    color: #382631;
+
+    font-size: 17px;
+
+    line-height: 1.55;
+
+    font-weight: 500;
+
+    letter-spacing: -0.01em;
+
+    text-shadow:
+        0 1px 1px rgba(255, 255, 255, 0.25);
+}
+
 /* =========================================
    Mobile / iPhone
 ========================================= */
+
 @media (max-width: 600px) {
+
     .crystal {
         width: 200px;
         height: 200px;
     }
+
     .crystal-inner {
         inset: 15px;
-        background:
-            radial-gradient(
-                circle at 50% 44%,
-                rgba(255, 238, 249, 0.92) 0%,
-                rgba(246, 205, 229, 0.78) 32%,
-                rgba(218, 158, 195, 0.60) 65%,
-                rgba(193, 116, 163, 0.50) 100%
-            );
     }
+
     .crystal-particle {
         width: max(4px, var(--size));
         height: max(4px, var(--size));
+
         box-shadow:
             0 0 3px #ffffff,
             0 0 7px #e7d4ff,
             0 0 11px #b98be8;
+
         opacity: 1;
     }
+
     .crystal-shine {
         width: 74px;
         height: 74px;
+
         top: 23px;
         left: 27px;
     }
+
     .crystal-highlight {
         height: 92px;
+
         top: 40px;
         right: 46px;
     }
+
+    .crystal-energy-ring {
+        width: 210px;
+        height: 210px;
+    }
+
+    .memory-materialization {
+        top: 210px;
+
+        width: 300px;
+        height: 160px;
+    }
+
+    .memory-card {
+        top: 230px;
+
+        width: calc(100vw - 38px);
+
+        min-height: 145px;
+
+        padding: 27px 23px;
+
+        border-radius: 25px;
+    }
+
+    .memory-message {
+        max-width: 280px;
+
+        font-size: 16px;
+
+        line-height: 1.52;
+    }
+
     .hint {
         margin-top: 28px;
+
         font-size: 1.05rem;
     }
+
     .sparkle-1 {
         left: 9%;
     }
+
     .sparkle-2 {
         right: 8%;
     }
+
     .sparkle-3 {
         left: 7%;
     }
+
     .sparkle-4 {
         right: 9%;
     }
 }
+
 /* =========================================
    Reduced motion
 ========================================= */
+
 @media (prefers-reduced-motion: reduce) {
+
     .crystal,
     .sparkle,
     .crystal-particle,
-    .crystal-star {
+    .memory-materialization,
+    .memory-energy,
+    .memory-sparks span,
+    .memory-card,
+    .memory-card-shine {
         animation: none;
     }
 }
