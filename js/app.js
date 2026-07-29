@@ -1,15 +1,17 @@
-'use strict';
+const crystal = document.querySelector(".crystal");
+const crystalWrapper = document.querySelector(".crystal-wrapper");
 
-// Этап 1.
-// На этом этапе JavaScript только инициализируется.
-// В следующих этапах здесь появятся:
-//
-// • система блесток;
-// • частицы внутри кристалла;
-// • обработка первого касания;
-// • магическая анимация раскрытия;
-// • показ карточки с сообщением.
+let isAwakened = false;
 
-document.addEventListener('DOMContentLoaded', () => {
-    console.log('Crystal of Memories initialized.');
-});
+function awakenCrystal() {
+    if (isAwakened) {
+        return;
+    }
+
+    isAwakened = true;
+
+    crystal.classList.add("is-awakening");
+    crystalWrapper.classList.add("is-awakening");
+}
+
+crystal.addEventListener("click", awakenCrystal);
