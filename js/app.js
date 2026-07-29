@@ -2,10 +2,9 @@ const crystal = document.querySelector(".crystal");
 const crystalWrapper = document.querySelector(".crystal-wrapper");
 const particlesContainer = document.querySelector(".crystal-particles");
 
-const PARTICLE_COUNT = 16;
+const PARTICLE_COUNT = 18;
 
 let particles = [];
-let animationFrame = null;
 let isAwakened = false;
 
 function random(min, max) {
@@ -14,6 +13,7 @@ function random(min, max) {
 
 function createParticles() {
     particlesContainer.innerHTML = "";
+
     particles = [];
 
     for (let i = 0; i < PARTICLE_COUNT; i += 1) {
@@ -21,28 +21,19 @@ function createParticles() {
 
         particle.className = "crystal-particle";
 
-        const size = random(3, 6);
-        const x = random(12, 88);
-        const y = random(12, 88);
+        const size = random(3, 5.5);
 
-        const particleData = {
-            element: particle,
+        /*
+         * Положение задаём непосредственно
+         * через left/top.
+         *
+         * Это специально сделано без процентов
+         * внутри transform, чтобы Safari
+         * не путал систему координат.
+         */
 
-            baseX: x,
-            baseY: y,
-
-            offsetX: random(0, Math.PI * 2),
-            offsetY: random(0, Math.PI * 2),
-
-            speedX: random(0.00035, 0.0007),
-            speedY: random(0.0003, 0.00065),
-
-            amplitudeX: random(4, 12),
-            amplitudeY: random(5, 14),
-
-            size,
-            opacity: random(0.55, 0.95)
-        };
+        const startX = random(10, 84);
+        const startY = random(10, 84);
 
         particle.style.setProperty(
             "--size",
@@ -50,67 +41,98 @@ function createParticles() {
         );
 
         particle.style.setProperty(
+            "--start-x",
+            `${startX}%`
+        );
+
+        particle.style.setProperty(
+            "--start-y",
+            `${startY}%`
+        );
+
+        particle.style.setProperty(
             "--opacity",
-            particleData.opacity
+            random(0.65, 1).toFixed(2)
         );
 
         particlesContainer.appendChild(particle);
 
-        particles.push(particleData);
+        particles.push({
+            element: particle,
+
+            x: startX,
+            y: startY,
+
+            angleX: random(0, Math.PI * 2),
+            angleY: random(0, Math.PI * 2),
+
+            speedX: random(0.00025, 0.00055),
+            speedY: random(0.0002, 0.0005),
+
+            distanceX: random(3, 9),
+            distanceY: random(4, 11)
+        });
     }
 }
 
 function animateParticles(timestamp) {
-    const speedMultiplier = isAwakened ? 3.2 : 1;
+    const multiplier = isAwakened ? 3.5 : 1;
 
     particles.forEach((particle) => {
-        const timeX =
-            timestamp * particle.speedX * speedMultiplier
-            + particle.offsetX;
+        const waveX =
+            Math.sin(
+                timestamp * particle.speedX * multiplier
+                + particle.angleX
+            );
 
-        const timeY =
-            timestamp * particle.speedY * speedMultiplier
-            + particle.offsetY;
+        const waveY =
+            Math.cos(
+                timestamp * particle.speedY * multiplier
+                + particle.angleY
+            );
 
         const x =
-            particle.baseX
-            + Math.sin(timeX) * particle.amplitudeX;
+            waveX * particle.distanceX;
 
         const y =
-            particle.baseY
-            + Math.cos(timeY) * particle.amplitudeY;
+            waveY * particle.distanceY;
 
         particle.element.style.transform =
-            `translate3d(${x}%, ${y}%, 0)`;
+            `translate3d(${x}px, ${y}px, 0)`;
     });
 
-    animationFrame =
-        window.requestAnimationFrame(animateParticles);
+    window.requestAnimationFrame(animateParticles);
 }
 
 function createInnerStars() {
     const stars = [
         {
             symbol: "✦",
-            left: "29%",
-            top: "34%",
-            size: "14px"
+            left: "27%",
+            top: "30%",
+            size: "13px",
+            duration: "5.5s",
+            delay: "-1s"
         },
         {
             symbol: "✧",
-            left: "63%",
-            top: "45%",
-            size: "17px"
+            left: "62%",
+            top: "43%",
+            size: "16px",
+            duration: "6.5s",
+            delay: "-3s"
         },
         {
             symbol: "✦",
-            left: "44%",
-            top: "67%",
-            size: "11px"
+            left: "43%",
+            top: "68%",
+            size: "11px",
+            duration: "5s",
+            delay: "-2s"
         }
     ];
 
-    stars.forEach((starData, index) => {
+    stars.forEach((starData) => {
         const star = document.createElement("span");
 
         star.className = "crystal-star";
@@ -122,7 +144,10 @@ function createInnerStars() {
         star.style.fontSize = starData.size;
 
         star.style.animation =
-            `innerStar${index + 1} ${5 + index}s ease-in-out infinite`;
+            `innerStarFloat ${starData.duration} ease-in-out infinite`;
+
+        star.style.animationDelay =
+            starData.delay;
 
         particlesContainer.appendChild(star);
     });
@@ -136,13 +161,22 @@ function awakenCrystal() {
     isAwakened = true;
 
     crystal.classList.add("is-awakening");
+
     crystalWrapper.classList.add("is-awakening");
 }
 
-createParticles();
-createInnerStars();
+function setup() {
+    createParticles();
+    createInnerStars();
 
-animationFrame =
-    window.requestAnimationFrame(animateParticles);
+    window.requestAnimationFrame(
+        animateParticles
+    );
 
-crystal.addEventListener("pointerdown", awakenCrystal);
+    crystal.addEventListener(
+        "pointerdown",
+        awakenCrystal
+    );
+}
+
+setup();

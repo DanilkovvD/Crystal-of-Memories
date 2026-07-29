@@ -61,7 +61,7 @@ body {
 }
 
 /* =========================================
-   Background
+   Background atmosphere
 ========================================= */
 
 .background-glow {
@@ -171,90 +171,68 @@ body {
 
 .sparkle-1 {
     --duration: 8s;
-
     top: 18%;
     left: 16%;
-
     animation-delay: -2s;
 }
 
 .sparkle-2 {
     --duration: 10s;
-
     top: 28%;
     right: 15%;
-
     font-size: 23px;
-
     animation-delay: -5s;
 }
 
 .sparkle-3 {
     --duration: 7s;
-
     top: 63%;
     left: 13%;
-
     animation-delay: -3s;
 }
 
 .sparkle-4 {
     --duration: 9s;
-
     top: 72%;
     right: 18%;
-
     font-size: 18px;
-
     animation-delay: -7s;
 }
 
 .sparkle-5 {
     --duration: 8s;
-
     top: 17%;
     right: 34%;
-
     animation-delay: -1s;
 }
 
 .sparkle-6 {
     --duration: 11s;
-
     top: 53%;
     left: 21%;
-
     font-size: 16px;
-
     animation-delay: -6s;
 }
 
 .sparkle-7 {
     --duration: 9s;
-
     top: 42%;
     right: 10%;
-
     animation-delay: -4s;
 }
 
 .sparkle-8 {
     --duration: 8.5s;
-
     top: 78%;
     left: 37%;
-
     font-size: 17px;
-
     animation-delay: -5s;
 }
 
 .sparkle-9 {
     --duration: 10s;
-
     top: 34%;
     left: 28%;
-
     animation-delay: -8s;
 }
 
@@ -387,7 +365,7 @@ body {
 .crystal-inner {
     position: absolute;
 
-    inset: 20px;
+    inset: 18px;
 
     border-radius: 50%;
 
@@ -395,22 +373,22 @@ body {
 
     background:
         radial-gradient(
-            circle at 50% 55%,
-            rgba(145, 54, 103, 0.35) 0%,
-            rgba(184, 71, 123, 0.24) 35%,
-            rgba(223, 128, 166, 0.12) 62%,
+            circle at 50% 48%,
+            rgba(102, 58, 132, 0.32) 0%,
+            rgba(139, 72, 145, 0.24) 35%,
+            rgba(201, 112, 167, 0.12) 66%,
             rgba(255, 255, 255, 0) 100%
         );
 
     box-shadow:
-        inset 0 0 35px rgba(111, 35, 78, 0.22),
-        inset 0 0 12px rgba(255, 255, 255, 0.35);
+        inset 0 0 38px rgba(77, 38, 99, 0.25),
+        inset 0 0 14px rgba(255, 255, 255, 0.35);
 
     z-index: 2;
 }
 
 /* =========================================
-   JavaScript particles
+   Particle field
 ========================================= */
 
 .crystal-particles {
@@ -433,85 +411,66 @@ body {
     width: var(--size);
     height: var(--size);
 
-    left: 0;
-    top: 0;
+    left: var(--start-x);
+    top: var(--start-y);
 
     border-radius: 50%;
 
     background:
         radial-gradient(
             circle,
-            #fffce9 0%,
-            #ffe28d 35%,
-            #e17da4 75%,
-            #9d4b78 100%
+            #ffffff 0%,
+            #eee2ff 28%,
+            #c9a8f0 58%,
+            #8d68b6 100%
         );
 
     box-shadow:
-        0 0 5px rgba(255, 250, 220, 1),
-        0 0 11px rgba(255, 208, 112, 1),
-        0 0 19px rgba(221, 103, 153, 0.95);
+        0 0 4px rgba(255, 255, 255, 1),
+        0 0 9px rgba(230, 210, 255, 1),
+        0 0 16px rgba(177, 133, 229, 0.95);
 
     opacity: var(--opacity);
 
     transform:
-        translate3d(
-            var(--x),
-            var(--y),
-            0
-        );
+        translate3d(0, 0, 0);
+
+    will-change:
+        transform,
+        opacity;
 
     transition:
         opacity 0.7s ease,
         box-shadow 0.7s ease;
-
-    will-change: transform;
-}
-
-.crystal-particle::after {
-    content: "";
-
-    position: absolute;
-
-    width: 2px;
-    height: 2px;
-
-    top: 50%;
-    left: 50%;
-
-    border-radius: 50%;
-
-    transform: translate(-50%, -50%);
-
-    background: #fffce8;
 }
 
 /* =========================================
-   Inner stars
+   Crystal inner sparkles
 ========================================= */
 
 .crystal-star {
     position: absolute;
 
-    z-index: 4;
+    z-index: 5;
 
-    color: #ffe5a1;
+    color: #fff9ff;
 
-    font-size: 15px;
     line-height: 1;
 
     text-shadow:
-        0 0 4px rgba(255, 251, 225, 1),
-        0 0 9px rgba(255, 200, 104, 1),
-        0 0 18px rgba(219, 103, 151, 0.95);
+        0 0 4px rgba(255, 255, 255, 1),
+        0 0 9px rgba(225, 204, 255, 1),
+        0 0 18px rgba(166, 117, 222, 0.95);
 
-    opacity: 0.85;
+    opacity: 0.9;
 
-    will-change: transform, opacity;
+    will-change:
+        transform,
+        opacity;
 }
 
 /* =========================================
-   Shine
+   Crystal shine
 ========================================= */
 
 .crystal-shine {
@@ -570,7 +529,7 @@ body {
 }
 
 /* =========================================
-   Crystal idle animation
+   Idle crystal movement
 ========================================= */
 
 @keyframes crystalFloat {
@@ -604,35 +563,35 @@ body {
 .crystal.is-awakening {
     animation:
         crystalAwaken
-        1.4s
+        1.5s
         ease-in-out
         forwards;
 
     box-shadow:
-        inset 0 0 45px rgba(255, 255, 255, 0.78),
+        inset 0 0 45px rgba(255, 255, 255, 0.8),
         inset 0 -20px 40px rgba(255, 255, 255, 0.2),
         0 30px 60px rgba(104, 35, 75, 0.25),
         0 0 80px rgba(255, 223, 239, 1),
-        0 0 135px rgba(234, 125, 174, 0.82);
+        0 0 135px rgba(214, 162, 249, 0.82);
 }
 
 .crystal.is-awakening .crystal-inner {
     background:
         radial-gradient(
-            circle at 50% 55%,
-            rgba(130, 43, 94, 0.48) 0%,
-            rgba(176, 62, 120, 0.34) 35%,
-            rgba(223, 128, 166, 0.14) 65%,
+            circle at 50% 48%,
+            rgba(91, 44, 126, 0.5) 0%,
+            rgba(131, 62, 143, 0.36) 35%,
+            rgba(194, 102, 168, 0.15) 67%,
             rgba(255, 255, 255, 0) 100%
         );
 }
 
 .crystal.is-awakening .crystal-particle {
     box-shadow:
-        0 0 7px rgba(255, 252, 225, 1),
-        0 0 14px rgba(255, 209, 109, 1),
-        0 0 25px rgba(226, 103, 155, 1),
-        0 0 36px rgba(161, 61, 112, 0.8);
+        0 0 5px rgba(255, 255, 255, 1),
+        0 0 12px rgba(239, 224, 255, 1),
+        0 0 22px rgba(190, 143, 242, 1),
+        0 0 32px rgba(139, 82, 192, 0.9);
 
     opacity: 1;
 }
@@ -649,12 +608,16 @@ body {
         transform: scale(1);
     }
 
-    45% {
-        transform: scale(1.055);
+    40% {
+        transform: scale(1.06);
+    }
+
+    70% {
+        transform: scale(1.025);
     }
 
     100% {
-        transform: scale(1.025);
+        transform: scale(1.035);
     }
 }
 
@@ -713,7 +676,7 @@ body {
     }
 
     .crystal-inner {
-        inset: 17px;
+        inset: 16px;
     }
 
     .crystal-shine {
